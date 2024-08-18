@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/shared/base.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+     <link rel="stylesheet" href="/css/shared/header.css">
+     <link rel="stylesheet" href="/css/shared/pagination.css">
+     <link rel="stylesheet" href="/css/shared/tool.css">
+     <link rel="stylesheet" href="/css/shared/login.css">
+     <link rel="stylesheet" href="/css/shared/confirm.css">
+     <link rel="stylesheet" href="/css/private/chapter.css">
+     <title>Welcome to tutientruyen</title>
+</head>
+<body>
+     <div class="app">
+          
+          <%- include('partials/header') %>
+          
+          <div class="body">
+               <div class="body_info">
+                    <div class="body_info__path">
+                         <a href="/">Trang chủ</a>
+                         <span>/</span>
+                         <a href="/truyen/<%= chapterInfo.link %>"><%= chapterInfo.ten %></a>
+                         <span>/</span>
+                         <a href="/truyen/<%= chapterInfo.link %>/chapter-<%= chapterInfo.chuong %>">Chương <%= chapterInfo.chuong %></a>
+                    </div>
+                    <div class="body_info__flag">
+                         <i class="fa-solid fa-flag"></i>
+                         <span>Báo lỗi</span>
+                    </div>
+               </div>
+               
+               <div class="body_content">
+                    <% chapterInfo.anh.forEach(item => { %>
+                         <div class="body_image">
+                              <img src="<%= item.path %>" alt="image <%= item.stt %>">
+                         </div>
+                    <% }) %>
+               </div>
+          </div>
+          <div class="comment">
+               <div class="comment_title">
+                    <i class="fa-solid fa-comment"></i>
+                    <span>Bình luận</span>
+               </div>
+               <% if(userInfo) { %>
+                    <div class="comment_post">
+                         <div class="comment_post__img">
+                              <img src="<%= userInfo.anh %>" alt="avatar">
+                         </div>
+                         
+                         <div class="comment_post__block">
+                              <form action="/truyen/<%= chapterInfo.link %>/chapter-<%= chapterInfo.chuong %>/comment/create" method="post" class="comment_post__textarea-block" id="comment_post__textarea-form">
+                                   <textarea name="noi_dung" id=""  class="comment_post__block-input" placeholder="Hãy viết gì đó"></textarea>
+                                   <div style="display: none" class="comment_post__textarea-support">
+                                        <span></span>
+                                        <i class="fa-solid fa-circle-xmark"></i>
+                                   </div>
+                              </form>
+                              
+                              <div class="comment_post__block-btn">
+                                   <button type="submit" form="comment_post__textarea-form">Đăng</button>
+                              </div>
+                         </div>
+                    </div>
+               <% } else { %>
+                    <div class="comment_post">
+                         <div class="comment_post__img">
+                              <img src="/images/local/anonymous.png" alt="avatar">
+                         </div>
+               
+                         <div class="comment_post__block">
+                              <form action="/truyen/<%= chapterInfo.link %>/chapter-<%= chapter %>/comment/create" method="post" class="comment_post__textarea-block" id="comment_post__textarea-form">
+                                   <textarea name="noi_dung" id=""  class="comment_post__block-input" placeholder="Hãy viết gì đó"></textarea>
+                                   <div style="display: none" class="comment_post__textarea-support">
+                                        <span></span>
+                                        <i class="fa-solid fa-circle-xmark"></i>
+                                   </div>
+                              </form>
+                              
+                              <div class="comment_post__block-btn">
+                                   <button type="submit" form="comment_post__textarea-form">Đăng</button>
+                              </div>
+                         </div>
+                    </div>
+               <% } %>
+
+               <div class="comment_list">
+                    <!-- <div class="comment_list__item">
+                         <div class="comment_list__img">
+                              <img src="../public/images/local/anonymous.png" alt="avatar">
+                         </div>
+                         <div class="comment_list__sidebar">
+                              <div class="comment_list__content">
+                                   <div class="comment_list__content-head">
+                                        <div class="comment_list__content-name">
+                                             Nguyễn Cao
+                                        </div>
+                                        <div class="comment_list__content-time">
+                                             <i class="fa-solid fa-clock"></i>
+                                             <span>13 giờ trước</span>
+                                        </div>
+                                   </div>
+                                   <div class="comment_list__content-body">
+                                        Truyện hay lắm nha
+                                   </div>
+                                   <div class="comment_list__content-foot">
+                                        <div class="comment_list__content-emotion">
+                                             <div>
+                                                  <i class="fa-regular fa-thumbs-up"></i>
+                                                  <span>12</span>
+                                             </div>
+                                             <div>
+                                                  <i class="fa-regular fa-thumbs-down"></i>
+                                                  <span>0</span>
+                                             </div>
+                                        </div>
+                                        <div class="comment_list__content-response">
+                                             <i class="fa-solid fa-reply"></i>
+                                             <span>Trả lời</span>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="comment_list__subcomment">
+                                   <div class="comment_list__notification">
+                                        <i class="fa-solid fa-caret-down"></i>
+                                        <span>1 câu trả lời</span>
+                                   </div>
+                                   <div class="comment_list__subcontent">
+                                        <div class="comment_list__item">
+                                             <div class="comment_list__img">
+                                                  <img src="../public/images/local/anonymous.png" alt="avatar">
+                                             </div>
+                                             <div class="comment_list__sidebar">
+                                                  <div class="comment_list__content">
+                                                       <div class="comment_list__content-head">
+                                                            <div class="comment_list__content-name">
+                                                                 Nguyễn Cao
+                                                            </div>
+                                                            <div class="comment_list__content-time">
+                                                                 <i class="fa-solid fa-clock"></i>
+                                                                 <span>13 giờ trước</span>
+                                                            </div>
+                                                       </div>
+                                                       <div class="comment_list__content-body">
+                                                            Truyện hay lắm nha
+                                                       </div>
+                                                       <div class="comment_list__content-foot">
+                                                            <div class="comment_list__content-emotion">
+                                                                 <div>
+                                                                      <i class="fa-regular fa-thumbs-up"></i>
+                                                                      <span>12</span>
+                                                                 </div>
+                                                                 <div>
+                                                                      <i class="fa-regular fa-thumbs-down"></i>
+                                                                      <span>0</span>
+                                                                 </div>
+                                                            </div>
+                                                            <div class="comment_list__content-response">
+                                                                 <i class="fa-solid fa-reply"></i>
+                                                                 <span>Trả lời</span>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <div class="comment_list__subcomment">
+                                                       <div class="comment_list__notification">
+                                                            <i class="fa-solid fa-caret-down"></i>
+                                                            <span>1 câu trả lời</span>
+                                                       </div>
+                                                       <div class="comment_list__subcontent">
+
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div> -->
+               </div>
+          </div>
+
+          <div class="pagination">
+               <!-- <a href="" class="pagination__before">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>TRƯỚC</span>
+               </a>
+               <div class="pagination__main">
+                    <span>Trang</span>
+                    <div class="pagination__select">
+                         <span>1</span>
+                         <i class="fa-solid fa-angle-down fa-2xs"></i>
+                         <div class="pagination__option">
+                              <a href="" class="pagination__option-link">
+                                   1
+                              </a>
+                              <a href="" class="pagination__option-link">
+                                   2
+                              </a>
+                              <a href="" class="pagination__option-link">
+                                   3
+                              </a>
+                         </div>
+                    </div>
+                    <span>/</span>
+                    <span>5</span>
+               </div>
+               <a href="" class="pagination__after">
+                    <span>SAU</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+               </a> -->
+          </div>
+
+          <div class="tool">
+               <a href="/truyen/<%= chapterInfo.link %>" class="tool_item tool_home" title="Trở về danh mục truyện">
+                    <i class="fa-solid fa-house"></i>
+               </a>
+               <button class="tool_item tool_list" title="Danh sách chương">
+                    <i class="fa-solid fa-bars"></i>
+                    <div style= "display: none" class="tool_list__block">
+                         <div>Danh sách chương</div>
+                         <div class="tool_list__item">
+                              <% chapterInfo.tat_ca_chuong.forEach(item => { %>
+                                   <a href="/truyen/<%= chapterInfo.link %>/chapter-<%= item %>">Chương <%= item %></a>
+                              <% }) %>
+                         </div>
+                         <div></div>
+                    </div>
+               </button>
+               <% if (statusOfChapter === 1) {%>
+                    <a href="/truyen/<%= chapterInfo.link %>/chapter-<%= chapter+1 %>" class="tool_item tool_afterChapter" title="Chương tiếp theo">
+                         <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <button style="opacity: 0.5; pointer-events: none;" class="tool_item tool_prevChapter">
+                         <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+               <% } else if (statusOfChapter === 2) { %>
+                    <button style="opacity: 0.5; pointer-events: none;" class="tool_item tool_afterChapter">
+                         <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <a href="/truyen/<%= chapterInfo.link %>/chapter-<%= chapter-1 %>" class="tool_item tool_prevChapter" title="Chương trước">
+                         <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+               <% } else if (statusOfChapter === 3) {%>
+                    <a href="/truyen/<%= chapterInfo.link %>/chapter-<%= chapter+1 %>" class="tool_item tool_afterChapter" title="Chương tiếp theo">
+                         <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="/truyen/<%= chapterInfo.link %>/chapter-<%= chapter-1 %>" class="tool_item tool_prevChapter" title="Chương trước">
+                         <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+               <% } else { %>
+                    <button style="opacity: 0.5; pointer-events: none;" class="tool_item tool_afterChapter">
+                         <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button style="opacity: 0.5; pointer-events: none;" class="tool_item tool_prevChapter">
+                         <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+               <% } %>
+               <button class="tool_item tool_comment" title="Đến khu vực bình luận">
+                    <i class="fa-regular fa-comment-dots"></i>
+               </button>
+               <button class="tool_item tool_scroll" title="Về đầu trang">
+                    <i class="fa-solid fa-arrow-up"></i>
+               </button>
+          </div>
+
+          <!-- Cửa sổ pop up đăng ký / đăng nhập -->
+          <%- include('partials/login') %>
+
+          <!-- Cửa sổ popup xác nhận xóa bình luận -->
+          <%- include('partials/confirm') %>
+
+     </div>
+</body>
+<script src="/js/private/chapter.js"></script>
+<script src="/js/shared/search.js"></script>
+<script src="/js/shared/login.js"></script>
+<script src="/js/shared/tool.js"></script>
+</html>

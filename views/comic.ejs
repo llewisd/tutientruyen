@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/shared/base.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+     <link rel="stylesheet" href="/css/shared/header.css">
+     <link rel="stylesheet" href="/css/shared/login.css">
+     <link rel="stylesheet" href="/css/private/comic.css">
+     <title>Welcome to tutientruyen</title>
+</head>
+<body>
+     <div class="app">
+          <%- include('partials/header') %>
+
+          <div class="body">
+               <div class="body_name">
+                    <%= comicInfo.ten %>
+               </div>
+               <div class="body_info">
+                    <div class="body_info__img">
+                         <img src="<%= comicInfo.anh %>" alt="<%= comicInfo.ten %>">
+                    </div>
+                    <div class="body_info__addition">
+                         <table>
+                              <tr class="body_info__otherName">
+                                   <td>Tên khác : </td>
+                                   <td><%= comicInfo.ten_khac %></td>
+                              </tr>
+                              <!-- <tr class="body_info__author">
+                                   <td>Tác giả : </td>
+                                   <td><%= comicInfo.tac_gia %></td>
+                              </tr> -->
+                              <tr class="body_info__trans">
+                                   <td>Tác giả : </td>
+                                   <td><%= comicInfo.tac_gia %></td>
+                              </tr>
+                              <tr class="body_info__status">
+                                   <td>Trạng thái : </td>
+                                   <td><%= comicInfo.trang_thai %></td>
+                              </tr>
+                              <tr class="body_info__view">
+                                   <td>Lượt xem : </td>
+                                   <td><%= formatViewsWithSpace(comicInfo.tong_luot_xem) %></td>
+                              </tr>
+                              <tr class="body_info__genreBlock">
+                                   <td>Thể loại : </td>
+                                   <td>
+                                        <% comicInfo.the_loai.forEach(item => { %>
+                                             <a href=""><%= item %></a>
+                                        <% }) %>
+                                   </td>
+                              </tr>
+                         </table>
+                    </div>
+               </div>
+               <div class="body_description">
+                    <div class="body_description__title">
+                         <i class="fa-solid fa-pen"></i>
+                         <span>Mô tả</span>
+                    </div>
+                    <div class="body_description__detail"><%= comicInfo.mo_ta %></div>
+               </div>
+
+               <div class="body_chapterList">
+                    <div class="body_chapterList__title">
+                         <i class="fa-solid fa-layer-group"></i>
+                         <span>Danh sách chương</span>
+                    </div>
+                    <div class="body_chapterList__list">
+                         <% comicInfo.chapter.forEach(item => { %>
+                              <a href="<%= currentUrl %>/chapter-<%= item.chuong %>?chapter_id=<%= item.chapter_id %>" class="body_chapterList__item">
+                                   <div class="body_chapterList__item-head">
+                                        <span class="body_chapterList__item-head-chapter">Chương <%= item.chuong %></span>
+                                        <!-- <span class="body_chapterList__item-head-sign">-</span>
+                                        <span class="body_chapterList__item-head-description">Đi đến Lưu Vân Tông</span> -->
+                                   </div>
+                                   <div class="body_chapterList__item-foot">
+                                        <div class="body_chapterList__item-foot-date">
+                                             <i class="fa-solid fa-calendar-days"></i>
+                                             <span><%= item.cap_nhat %></span>
+                                        </div>
+                                        <div class="body_chapterList__item-foot-info">
+                                             <div class="body_chapterList__item-foot-view">
+                                                  <i class="fa-solid fa-eye"></i>
+                                                  <span><%= formatViewsNoSpace(item.luot_xem) %></span>
+                                             </div>
+                                             <div class="body_chapterList__item-foot-comment">
+                                                  <i class="fa-regular fa-comment"></i>
+                                                  <span><%= formatViewsNoSpace(item.so_binh_luan) %></span>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </a>
+                         <% }) %>
+                         
+                    </div>
+               </div>
+          </div>
+
+          <!-- Cửa sổ pop up đăng ký / đăng nhập -->
+          <%- include('partials/login') %>
+
+     </div>
+</body>
+<script src="/js/shared/calculate.js"></script>
+<script src="/js/shared/search.js"></script>
+<script src="/js/shared/login.js"></script>
+<script src="/js/private/comic.js"></script>
+
+</html>

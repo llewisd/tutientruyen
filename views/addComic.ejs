@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/shared/base.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+     <link rel="stylesheet" href="/css/shared/header.css">
+     <link rel="stylesheet" href="/css/shared/tool.css">
+     <link rel="stylesheet" href="/css/shared/login.css">
+     <link rel="stylesheet" href="/css/private/addComic.css">
+     <title>Welcome to tutientruyen</title>
+</head>
+<body>
+     <div class="app">
+          <%- include('partials/header') %>
+
+          <div class="body">
+               <div class="body_block">
+                    <div class="body_header">
+                         <div class="body_header__intro">
+                              <i class="fa-solid fa-bars"></i>
+                              <span>Danh mục truyện</span>
+                         </div>
+                         <form class="body_header__search-block" id="body_header__search-form">
+                              <input type="text" name="comic" class="body_header__search-bar" placeholder="Tìm kiếm">
+                              <button type="submit" form="body_header__search-form"><i class="fa-solid fa-magnifying-glass"></i></button> 
+                         </form>
+                    </div>
+
+                    <div class="body_comic__list">
+
+                         <div class="body_comic__item">
+                              <div class="body_comic__item-img">
+                                   <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="avatar">
+                              </div>
+                              <div class="body_comic__item-content" data-truyen-id="">
+                                   <div class="body_comic__item-first">
+                                        <div class="body_comic__item-name">
+                                             <div>Đại quản gia là ma hoàng</div>
+                                             <div><i class="fa-solid fa-pen"></i></div>
+                                        </div>
+                                        <div class="body_comic__item-first-support">
+                                             <div class="body_comic__item-delete">
+                                                  <i class="fa-regular fa-trash-can"></i>
+                                             </div>
+                                             <div class="body_comic__item-date">
+                                                  <i class="fa-regular fa-clock"></i>
+                                                  <span>13/08/2020</span>
+                                             </div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-second">
+                                        <div class="body_comic__item-moreInfo">
+                                             <div>Số chương:  400</div>
+                                             <div> | </div>
+                                             <div>Tình trạng:  Đang tiến hành</div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-third">
+                                        <div class="body_comic__item-error-view">
+                                             <div class="body_comic__item-flag">
+                                                  <i class="fa-solid fa-flag"></i>
+                                                  <span>Báo lỗi : </span>
+                                                  <span>0</span>
+                                                  <button>reset</button>
+                                             </div>
+                                             <div class="body_comic__item-view">
+                                                  <i class="fa-regular fa-eye"></i>
+                                                  <span>3000</span>
+                                             </div>
+                                        </div>
+                                        <div class="body_comic__item-detail">
+                                             <i class="fa-solid fa-arrow-right-long"></i>
+                                        </div>
+                                   </div>
+
+                              </div>
+                         </div>
+
+                    </div>
+               </div>
+          </div>
+
+          <div class="add_btn__footer">
+               <i class="fa-solid fa-plus"></i>
+          </div>
+          <!-- Cửa sổ pop up đăng ký / đăng nhập -->
+          <%- include('partials/login') %>
+
+           <!-- Cửa sổ popup xác nhận xóa bình luận -->
+           <div style="display: none" class="delete_confirm__block">
+               <div class="delete_confirm__popup">
+                    <div class="delete_confirm__content">
+                         Bạn có chắc muốn xóa không
+                    </div>
+                    <div class="delete_confirm__select">
+                         <button>Hủy</button>
+                         <button>Xóa</button>
+                    </div>
+               </div>
+          </div>
+
+          <!-- Pop up thêm truyện -->
+           <div style="display: none" class="addComic_block">
+               <div class="addComic_popup">
+               
+                    <div class="addComic_exit">
+                         <div><i class="fa-regular fa-circle-xmark"></i></div>
+                    </div>
+                    <form action="/addComic/create" method="post" id="addComic_popup__form-container" class="addComic_popup__container">
+                         <label for="comic_name">Tên <span style="color: red">*</span></label>
+                         <div class="addComic_popup__name">
+                              <input type="text" name="comic_name" id="comic_name" class="addComic_popup__input" placeholder="Tên" required>
+                         </div>
+
+                         <label for="other_comic_name">Tên khác</label>
+                         <div class="addComic_popup__other-name">
+                              <input type="text" name="other_comic_name" id="other_comic_name" class="addComic_popup__input" placeholder="Tên khác">
+                         </div>
+
+                         <div class="addComic_popup__img">
+                              <img src="/images/local/anonymous.png" alt="avatar">
+                         </div>
+                         <div class="addComic_popup__observation">
+                              <input type="file" name="image_path" id="image_path" accept="image/*" placeholder="Ảnh đại diện" required>
+                         </div>
+
+                         <label for="addComic_popup__author-dropdown">Tác giả </label>
+                         <div class="addComic_popup__author">
+                              <input type="text" name="author" id="author" class="addComic_popup__input" placeholder="Tên tác giả">
+                         </div>
+
+                         <label for="addComic_popup__description-input">Mô tả</label>
+                         <div class="addComic_popup__description">
+                              <textarea name="mo_ta" id="addComic_popup__description-input" class="addComic_popup__input" placeholder="Hãy nhập mô tả"></textarea>
+                         </div>
+
+                         <label for="addComic_popup__status-dropdown">Trạng thái</label>
+                         <div class="addComic_popup__status">
+                              <select  name="status" id="addComic_popup__status-dropdown" class="addComic_popup__dropdown">
+                                   <option value="Đang cập nhật">Đang cập nhật</option>
+                                   <option value="Hoàn thành">Hoàn thành</option>
+                              </select>
+                         </div>
+
+                         <label for="addComic_popup__genre-dropdown">Thể loại <span style="color: red">*</span></label>
+                         <div class="addComic_popup__genres">
+                              <select  name="genre" id="addComic_popup__genre-dropdown" class="addComic_popup__dropdown" required>
+                                   <option value="" disabled selected>-- Chọn --</option>
+                                   <% all_genre.forEach(item => { %>
+                                        <option value="<%= item.ten %>" data-genre-id="<%= item._id %>"><%= item.ten %></option>
+                                   <% }) %>
+                              </select>
+                              <div class="addComic_popup__genre-list">
+                                   
+                              </div>
+                         </div>
+                    </form>
+                    <div class="addComic_button">
+                         <button>Hủy</button>
+                         <button type="submit" form="addComic_popup__form-container">Tạo</button>
+                    </div>
+               </div>
+           </div>
+
+     </div>
+</body>
+<script src="/js/shared/search.js"></script>
+<script src="/js/shared/tool.js"></script>
+<script src="/js/shared/login.js"></script>
+<script src="/js/private/addComic.js"></script>
+</html>

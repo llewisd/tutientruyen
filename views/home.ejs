@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/shared/base.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+     <link rel="stylesheet" href="/css/shared/header.css">
+     <link rel="stylesheet" href="/css/shared/tool.css">
+     <link rel="stylesheet" href="/css/shared/login.css">
+     <link rel="stylesheet" href="/css/private/home.css">
+     <title>Welcome to tutientruyen</title>
+</head>
+<body>
+     <div class="app">
+          
+          <%- include('partials/header') %>
+
+          <div class="slider">
+               <div class="slider_block">
+                    <div class="slider_block__list">
+                         <% slider.forEach(item => { %>
+                              <div class="slider_block__item">
+                                   <a href="/truyen/<%= item.link %>" class="slider_block__info">
+                                        <img src="<%= item.anh %>" alt="<%= item.ten %>">
+                                         <span><%= getTimeSinceLastUpdate(item.cap_nhat) %></span>
+                                   </a>
+                                   <a href="/truyen/<%= item.link %>" class="slider_block__name"><%= item.ten %></a>
+                                   <a href="/truyen/<%= item.link %>/chapter-<%= item.chuong %>" class="slider_block__latest">Chương <%= item.chuong %></a>
+                              </div>
+                         <% }) %>
+                    </div>
+                    <div class="slider_block__button slider_block__buttonLeft">
+                         <i class="fa-solid fa-caret-left"></i>
+                    </div>
+                    <div class="slider_block__button slider_block__buttonRight">
+                         <i class="fa-solid fa-caret-right"></i>
+                    </div>
+               </div>
+          </div>
+
+          <div class="body">
+               <div class="body_list">
+                    <div class="body_list__title">
+                         <i class="fa-solid fa-star"></i>
+                         <span>Truyện mới cập nhật</span>
+                    </div>
+                    <div class="body_list__grid">
+                         <% content.forEach(item => { %>
+                              <div class="body_list__item">
+                                   <a href="/truyen/<%= item.link %>" class="body_list__info">
+                                        <img src="<%= item.anh %>" alt="<%= item.ten %>">
+                                         <span><%= getTimeSinceLastUpdate(item.cap_nhat) %></span>
+                                   </a>
+                                   <a href="/truyen/<%= item.link %>" class="body_list__name"><%= item.ten %></a>
+                                   <a href="/truyen/<%= item.link %>/chapter-<%= item.chuong %>" class="body_list__latest">Chương <%= item.chuong %></a>
+                              </div>
+                         <% }) %>
+                         <!-- <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div>
+                         <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div>
+                         <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div>
+                         <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div>
+                         <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div>
+                         <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div>
+                         <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div>
+                         <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div>
+                         <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div>
+                         <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div>
+                         <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div>
+                         <div class="body_list__item">
+                              <a href="" class="body_list__info">
+                                   <img src="/images/comic/nguyen_ton/nguyen_ton_avatar.jpg" alt="Nguyên tôn">
+                                   <span>1 giờ</span>
+                              </a>
+                              <a href="" class="body_list__name">Nguyên tôn</a>
+                              <a href="" class="body_list__latest">Chương 1230</a>
+                         </div> -->
+                    </div>
+                    <div class="body_list__addition">
+                         <a href="/filter?status=all&arrange=date&trans=all&genre=all&page=1">
+                              <span>Xem thêm</span>
+                              <i class="fa-solid fa-arrow-right"></i>
+                         </a>
+                    </div>
+               </div>
+               <div class="body_sidebar">
+                    <div class="body_board">
+                         <div class="body_board__title">
+                              <i class="fa-solid fa-tv"></i>
+                              <span>Bảng xếp hạng</span>
+                         </div>
+                         <div class="body_board__list">
+                              <% for(i = 0; i < 5 ; i++) { %>
+                                   <a href="/truyen/<%= sidebar[i].link %>" class="body_board__item">
+                                        <div class="body_board__image">
+                                             <img src="<%= sidebar[i].anh %>" alt="<%= sidebar[i].ten %>">
+                                        </div>
+                                        <div class="body_board__info">
+                                             <div class="body_board__rank-and-name">
+                                                  <div class="body_board__rank"># <%= i+1 %></div>
+                                                  <div class="body_board__name"><%= sidebar[i].ten %></div>
+                                             </div>
+                                             <div class="body_board__view">
+                                                  <i class="fa-solid fa-eye"></i>
+                                                   <span><%= sidebar[i].tong_luot_xem %></span>
+                                             </div>
+                                        </div>
+                                   </a>
+                              <% } %>
+                              
+                         </div>
+                    </div>
+                    <div class="body_fanpage">
+                         <div class="body_fanpage__title">
+                              <i class="fa-brands fa-facebook"></i>
+                              <span>Fanpage</span>
+                         </div>
+                    </div>
+               </div>
+          </div>
+
+          <div class="tool">
+               <a href="/filter?status=all&arrange=date&trans=all&genre=all&page=1" class="tool_item tool_filter">
+                    <i class="fa-solid fa-filter"></i>
+               </a>
+               <button class="tool_item tool_theme">
+                    <i class="fa-solid fa-sun"></i>
+               </button>
+               <button class="tool_item tool_scroll">
+                    <i class="fa-solid fa-arrow-up"></i>
+               </button>
+          </div>
+
+          <!-- Cửa sổ pop up đăng ký / đăng nhập -->
+           <%- include('partials/login') %>
+     </div>
+</body>
+<script src="/js/shared/tool.js"></script>
+<script src="/js/shared/calculate.js"></script>
+<script src="/js/shared/search.js"></script>
+<script src="/js/shared/login.js"></script>
+<script src="/js/private/home.js"></script>
+</html>

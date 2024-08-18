@@ -1,0 +1,111 @@
+<div class="header">
+     <div class="header_ext">
+          <a href="/" class="header_ext__logo">
+               <img src="/images/local/white_logo.png" alt="logo">
+          </a>
+          <div class="header_ext__search">
+               <input type="text" placeholder="Bạn đang tìm kiếm truyện gì" oninput="debounceSearch()">
+               <a href="">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+               </a>
+               <div style="display: none" class="header_ext__dropdown">
+                    <!-- <a href="" class="header_ext__dropdown-item">
+                         <div class="header_ext__dropdown-img">
+                              <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="Nguyên tôn">
+                         </div>
+                         <div class="header_ext__dropdown-info">
+                              <div class="header_ext__dropdown-info-name">Nguyên tôn Nguyên tôn Nguyên tôn Nguyên tôn Nguyên tôn</div>
+                              <div class="header_ext__dropdown-info-chapter">Chương 1000</div>
+                         </div>
+                    </a>
+                    <a href="" class="header_ext__dropdown-item">
+                         <div class="header_ext__dropdown-img">
+                              <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="Nguyên tôn">
+                         </div>
+                         <div class="header_ext__dropdown-info">
+                              <div class="header_ext__dropdown-info-name">Nguyên tôn</div>
+                              <div class="header_ext__dropdown-info-chapter">Chương 1000</div>
+                         </div>
+                    </a>
+                    <a href="" class="header_ext__dropdown-item">
+                         <div class="header_ext__dropdown-img">
+                              <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="Nguyên tôn">
+                         </div>
+                         <div class="header_ext__dropdown-info">
+                              <div class="header_ext__dropdown-info-name">Nguyên tôn</div>
+                              <div class="header_ext__dropdown-info-chapter">Chương 1000</div>
+                         </div>
+                    </a>
+                    <div style="display: none" class="header_ext__dropdown-none">
+                         Không tìm được truyện !
+                    </div> -->
+               </div>
+          </div>
+          <% if(userInfo) { %>
+          <button style="display: none" class="header_ext__signbutton">
+               Đăng ký / Đăng nhập
+          </button>
+
+          <button style="display: flex" class="header_ext__userInfo">
+               <div class="header_ext__userInfo-img">
+                    <img src="<%= userInfo.anh %>" alt="avatar">
+               </div>
+               <div class="header_ext__userInfo-name">
+                    <%= userInfo.ten %>
+               </div>
+               <div class="header_ext__userInfo-arrrow">
+                    <i class="fa-solid fa-caret-down"></i>
+               </div>
+
+               <div style="display: none" class="header_ext__userInfo-dropdown">
+                    <div class="header_ext__userInfo-dropdown-item">Cài đặt</div>
+                    <div class="header_ext__userInfo-dropdown-item">Thoát</div>
+               </div>
+          </button>
+          <% } else { %>
+               <button style="display: block" class="header_ext__signbutton">
+                    Đăng ký / Đăng nhập
+               </button>
+     
+               <button style="display: none" class="header_ext__userInfo">
+                    <div class="header_ext__userInfo-img">
+                         <img src="" alt="avatar">
+                    </div>
+                    <div class="header_ext__userInfo-name">
+                         
+                    </div>
+                    <div class="header_ext__userInfo-arrrow">
+                         <i class="fa-solid fa-caret-down"></i>
+                    </div>
+     
+                    <div style="display: none" class="header_ext__userInfo-dropdown">
+                         <div class="header_ext__userInfo-dropdown-item">Cài đặt</div>
+                         <div class="header_ext__userInfo-dropdown-item">Thoát</div>
+                    </div>
+               </button>
+          <% } %>
+     </div>
+
+     <div class="header_nav">
+          <div class="header_nav__list">
+               <a href="/" class="header_nav__item">Trang chủ</a>
+               <div class="header_nav__block">
+                    <a href="" class="header_nav__item">Thể loại <i class="fa-solid fa-caret-down"></i></i></a>
+                    <div class="header_nav__item-dropdown">
+                         <div class="header_nav__item-dropdown-block">
+                              <% all_genre.forEach(item => { %>
+                                   <a href="/filter?status=all&arrange=date&trans=all&genre=<%= item.ten %>&page=1"><%= item.ten %></a>
+                              <% }) %>
+                         </div>
+                    </div>
+               </div>
+               <a href="" class="header_nav__item">Liên hệ</a>
+               <% if (userInfo && userInfo.quyen !== 'user') { %>
+                    <a href="/addComic" class="header_nav__item">Đăng truyện</a>
+               <% } %>
+               <% if (userInfo && userInfo.quyen === 'admin') { %>
+                    <a href="" class="header_nav__item">Thống kê</a>
+               <% } %>
+          </div>
+     </div>
+</div>

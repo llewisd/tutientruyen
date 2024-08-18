@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="../public/css/shared/base.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+     <link rel="stylesheet" href="../public/css/shared/header.css">
+     <link rel="stylesheet" href="../public/css/shared/tool.css">
+     <link rel="stylesheet" href="../public/css/shared/login.css">
+     <link rel="stylesheet" href="../public/css/shared/confirm.css">
+     <link rel="stylesheet" href="../public/css/private/addComic.css">
+     <title>Welcome to tutientruyen</title>
+</head>
+<body>
+     <div class="app">
+          <div class="header">
+               <div class="header_ext">
+                    <a href="" class="header_ext__logo">
+                         <img src="../public/images/local/white_logo.png" alt="logo">
+                    </a>
+                    <div class="header_ext__search">
+                         <input type="text" placeholder="Bạn đang tìm kiếm truyện gì" oninput="debounceSearch()">
+                         <a href="">
+                              <i class="fa-solid fa-magnifying-glass"></i>
+                         </a>
+                         <div style="display: none" class="header_ext__dropdown">
+                              <a href="" class="header_ext__dropdown-item">
+                                   <div class="header_ext__dropdown-img">
+                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="Nguyên tôn">
+                                   </div>
+                                   <div class="header_ext__dropdown-info">
+                                        <div class="header_ext__dropdown-info-name">Nguyên tôn Nguyên tôn Nguyên tôn Nguyên tôn Nguyên tôn</div>
+                                        <div class="header_ext__dropdown-info-chapter">Chương 1000</div>
+                                   </div>
+                              </a>
+                              <a href="" class="header_ext__dropdown-item">
+                                   <div class="header_ext__dropdown-img">
+                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="Nguyên tôn">
+                                   </div>
+                                   <div class="header_ext__dropdown-info">
+                                        <div class="header_ext__dropdown-info-name">Nguyên tôn</div>
+                                        <div class="header_ext__dropdown-info-chapter">Chương 1000</div>
+                                   </div>
+                              </a>
+                              <a href="" class="header_ext__dropdown-item">
+                                   <div class="header_ext__dropdown-img">
+                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="Nguyên tôn">
+                                   </div>
+                                   <div class="header_ext__dropdown-info">
+                                        <div class="header_ext__dropdown-info-name">Nguyên tôn</div>
+                                        <div class="header_ext__dropdown-info-chapter">Chương 1000</div>
+                                   </div>
+                              </a>
+                              <div style="display: none" class="header_ext__dropdown-none">
+                                   Không tìm được truyện !
+                              </div>
+                         </div>
+                    </div>
+                    <button style="display: none;" class="header_ext__signbutton">
+                         Đăng ký / Đăng nhập
+                    </button>
+
+                    <button class="header_ext__userInfo">
+                         <div class="header_ext__userInfo-img">
+                              <img src="../public/images/local/anonymous.png" alt="anonymous">
+                         </div>
+                         <div class="header_ext__userInfo-name">
+                              DDUowngf gia tam thieeu
+                         </div>
+                         <div class="header_ext__userInfo-arrrow">
+                              <i class="fa-solid fa-caret-down"></i>
+                         </div>
+
+                         <div class="header_ext__userInfo-dropdown">
+                              <div class="header_ext__userInfo-dropdown-item">Cài đặt</div>
+                              <div class="header_ext__userInfo-dropdown-item">Thoát</div>
+                         </div>
+                    </button>
+               </div>
+               <div class="header_nav">
+                    <div class="header_nav__list">
+                         <a href="" class="header_nav__item">Trang chủ</a>
+                         <div class="header_nav__block">
+                              <a href="" class="header_nav__item">Thể loại <i class="fa-solid fa-caret-down"></i></i></a>
+                              <div class="header_nav__item-dropdown">
+                                   <div class="header_nav__item-dropdown-block">
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                   </div>
+                              </div>
+                         </div>
+                         <a href="" class="header_nav__item">Nhóm dịch <i class="fa-solid fa-caret-down"></i></i></a>
+                         <a href="" class="header_nav__item">Đăng ký nhóm dịch</a>
+                    </div>
+               </div>
+          </div>
+
+          <div class="body">
+               <div class="body_block">
+                    <div class="body_header">
+                         <div class="body_header__intro">
+                              <i class="fa-solid fa-bars"></i>
+                              <span>Danh mục truyện</span>
+                         </div>
+                         <form class="body_header__search-block" id="body_header__search-form">
+                              <input type="text" name="comic" class="body_header__search-bar" placeholder="Tìm kiếm">
+                              <button type="submit" form="body_header__search-form"><i class="fa-solid fa-magnifying-glass"></i></button> 
+                         </form>
+                    </div>
+
+                    <div class="body_comic__list">
+
+                         <div class="body_comic__item">
+                              <div class="body_comic__item-img">
+                                   <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="avatar">
+                              </div>
+                              <div class="body_comic__item-content" data-truyen-id="">
+                                   <div class="body_comic__item-first">
+                                        <div class="body_comic__item-name">
+                                             <div>Đại quản gia là ma hoàng</div>
+                                             <div><i class="fa-solid fa-pen"></i></div>
+                                        </div>
+                                        <div class="body_comic__item-first-support">
+                                             <div class="body_comic__item-delete">
+                                                  <i class="fa-regular fa-trash-can"></i>
+                                             </div>
+                                             <div class="body_comic__item-date">
+                                                  <i class="fa-regular fa-clock"></i>
+                                                  <span>13/08/2020</span>
+                                             </div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-second">
+                                        <div class="body_comic__item-moreInfo">
+                                             <div>Số chương:  400</div>
+                                             <div> | </div>
+                                             <div>Tình trạng:  Đang tiến hành</div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-third">
+                                        <div class="body_comic__item-error-view">
+                                             <div class="body_comic__item-flag">
+                                                  <i class="fa-solid fa-flag"></i>
+                                                  <span>Báo lỗi : </span>
+                                                  <span>0</span>
+                                                  <button>reset</button>
+                                             </div>
+                                             <div class="body_comic__item-view">
+                                                  <i class="fa-regular fa-eye"></i>
+                                                  <span>3000</span>
+                                             </div>
+                                        </div>
+                                        <div class="body_comic__item-detail">
+                                             <i class="fa-solid fa-arrow-right-long"></i>
+                                        </div>
+                                   </div>
+
+                              </div>
+                         </div>
+                         <div class="body_comic__item">
+                              <div class="body_comic__item-img">
+                                   <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="avatar">
+                              </div>
+                              <div class="body_comic__item-content">
+                                   <div class="body_comic__item-first">
+                                        <div class="body_comic__item-name">
+                                             <div>Đại quản gia là ma hoàng</div>
+                                             <div><i class="fa-solid fa-pen"></i></div>
+                                        </div>
+                                        <div class="body_comic__item-first-support">
+                                             <div class="body_comic__item-delete">
+                                                  <i class="fa-regular fa-trash-can"></i>
+                                             </div>
+                                             <div class="body_comic__item-date">
+                                                  <i class="fa-regular fa-clock"></i>
+                                                  <span>13/08/2020</span>
+                                             </div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-second">
+                                        <div class="body_comic__item-moreInfo">
+                                             <div>Số chương:  400</div>
+                                             <div> | </div>
+                                             <div>Tình trạng:  Đang tiến hành</div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-third">
+                                        <div class="body_comic__item-error-view">
+                                             <div class="body_comic__item-flag">
+                                                  <i class="fa-solid fa-flag"></i>
+                                                  <span>Báo lỗi : </span>
+                                                  <span>0</span>
+                                                  <button>reset</button>
+                                             </div>
+                                             <div class="body_comic__item-view">
+                                                  <i class="fa-regular fa-eye"></i>
+                                                  <span>3000</span>
+                                             </div>
+                                        </div>
+                                        <div class="body_comic__item-detail">
+                                             <i class="fa-solid fa-arrow-right-long"></i>
+                                        </div>
+                                   </div>
+
+                              </div>
+                         </div>
+                         <div class="body_comic__item">
+                              <div class="body_comic__item-img">
+                                   <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="avatar">
+                              </div>
+                              <div class="body_comic__item-content">
+                                   <div class="body_comic__item-first">
+                                        <div class="body_comic__item-name">
+                                             <div>Đại quản gia là ma hoàng</div>
+                                             <div><i class="fa-solid fa-pen"></i></div>
+                                        </div>
+                                        <div class="body_comic__item-first-support">
+                                             <div class="body_comic__item-delete">
+                                                  <i class="fa-regular fa-trash-can"></i>
+                                             </div>
+                                             <div class="body_comic__item-date">
+                                                  <i class="fa-regular fa-clock"></i>
+                                                  <span>13/08/2020</span>
+                                             </div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-second">
+                                        <div class="body_comic__item-moreInfo">
+                                             <div>Số chương:  400</div>
+                                             <div> | </div>
+                                             <div>Tình trạng:  Đang tiến hành</div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-third">
+                                        <div class="body_comic__item-error-view">
+                                             <div class="body_comic__item-flag">
+                                                  <i class="fa-solid fa-flag"></i>
+                                                  <span>Báo lỗi : </span>
+                                                  <span>0</span>
+                                                  <button>reset</button>
+                                             </div>
+                                             <div class="body_comic__item-view">
+                                                  <i class="fa-regular fa-eye"></i>
+                                                  <span>3000</span>
+                                             </div>
+                                        </div>
+                                        <div class="body_comic__item-detail">
+                                             <i class="fa-solid fa-arrow-right-long"></i>
+                                        </div>
+                                   </div>
+
+                              </div>
+                         </div>
+                         <div class="body_comic__item">
+                              <div class="body_comic__item-img">
+                                   <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="avatar">
+                              </div>
+                              <div class="body_comic__item-content">
+                                   <div class="body_comic__item-first">
+                                        <div class="body_comic__item-name">
+                                             <div>Đại quản gia là ma hoàng</div>
+                                             <div><i class="fa-solid fa-pen"></i></div>
+                                        </div>
+                                        <div class="body_comic__item-first-support">
+                                             <div class="body_comic__item-delete">
+                                                  <i class="fa-regular fa-trash-can"></i>
+                                             </div>
+                                             <div class="body_comic__item-date">
+                                                  <i class="fa-regular fa-clock"></i>
+                                                  <span>13/08/2020</span>
+                                             </div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-second">
+                                        <div class="body_comic__item-moreInfo">
+                                             <div>Số chương:  400</div>
+                                             <div> | </div>
+                                             <div>Tình trạng:  Đang tiến hành</div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-third">
+                                        <div class="body_comic__item-error-view">
+                                             <div class="body_comic__item-flag">
+                                                  <i class="fa-solid fa-flag"></i>
+                                                  <span>Báo lỗi : </span>
+                                                  <span>0</span>
+                                                  <button>reset</button>
+                                             </div>
+                                             <div class="body_comic__item-view">
+                                                  <i class="fa-regular fa-eye"></i>
+                                                  <span>3000</span>
+                                             </div>
+                                        </div>
+                                        <div class="body_comic__item-detail">
+                                             <i class="fa-solid fa-arrow-right-long"></i>
+                                        </div>
+                                   </div>
+
+                              </div>
+                         </div>
+                         <div class="body_comic__item">
+                              <div class="body_comic__item-img">
+                                   <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="avatar">
+                              </div>
+                              <div class="body_comic__item-content">
+                                   <div class="body_comic__item-first">
+                                        <div class="body_comic__item-name">
+                                             <div>Đại quản gia là ma hoàng</div>
+                                             <div><i class="fa-solid fa-pen"></i></div>
+                                        </div>
+                                        <div class="body_comic__item-first-support">
+                                             <div class="body_comic__item-delete">
+                                                  <i class="fa-regular fa-trash-can"></i>
+                                             </div>
+                                             <div class="body_comic__item-date">
+                                                  <i class="fa-regular fa-clock"></i>
+                                                  <span>13/08/2020</span>
+                                             </div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-second">
+                                        <div class="body_comic__item-moreInfo">
+                                             <div>Số chương:  400</div>
+                                             <div> | </div>
+                                             <div>Tình trạng:  Đang tiến hành</div>
+                                        </div>
+                                   </div>
+     
+                                   <div class="body_comic__item-third">
+                                        <div class="body_comic__item-error-view">
+                                             <div class="body_comic__item-flag">
+                                                  <i class="fa-solid fa-flag"></i>
+                                                  <span>Báo lỗi : </span>
+                                                  <span>0</span>
+                                                  <button>reset</button>
+                                             </div>
+                                             <div class="body_comic__item-view">
+                                                  <i class="fa-regular fa-eye"></i>
+                                                  <span>3000</span>
+                                             </div>
+                                        </div>
+                                        <div class="body_comic__item-detail">
+                                             <i class="fa-solid fa-arrow-right-long"></i>
+                                        </div>
+                                   </div>
+
+                              </div>
+                         </div>
+
+                    </div>
+               </div>
+          </div>
+
+          <div class="add_btn__footer">
+               <i class="fa-solid fa-plus"></i>
+          </div>
+
+          <!-- Cửa sổ popup xác nhận xóa bình luận -->
+          <div style="display: none" class="delete_confirm__block">
+               <div class="delete_confirm__popup">
+                    <div class="delete_confirm__content">
+                         Bạn có chắc muốn xóa không
+                    </div>
+                    <div class="delete_confirm__select">
+                         <button>Hủy</button>
+                         <button>Xóa</button>
+                    </div>
+               </div>
+          </div>
+
+          <!-- Pop up thêm truyện -->
+           <div style="display: none" class="addComic_block">
+               <div class="addComic_popup">
+               
+                    <div class="addComic_exit">
+                         <div><i class="fa-regular fa-circle-xmark"></i></div>
+                    </div>
+                    <form  action="" method="post" id="addComic_popup__form-container" class="addComic_popup__container">
+                         <label for="comic_name">Tên <span style="color: red">*</span></label>
+                         <div class="addComic_popup__name">
+                              <input type="text" name="comic_name" id="comic_name" class="addComic_popup__input" placeholder="Tên" required>
+                         </div>
+
+                         <label for="other_comic_name">Tên khác</label>
+                         <div class="addComic_popup__other-name">
+                              <input type="text" name="other_comic_name" id="other_comic_name" class="addComic_popup__input" placeholder="Tên khác">
+                         </div>
+
+                         <div class="addComic_popup__img">
+                              <img src="../public/images/comic/dai_quan_gia_la_ma_hoang/avatar/avatar.jpg" alt="">
+                         </div>
+                         <div class="addComic_popup__observation">
+                              <input type="file" name="image_path" id="image_path" placeholder="Ảnh đại diện" required>
+                         </div>
+
+                         <label for="addComic_popup__trans-dropdown">Nhóm dịch </label>
+                         <div class="addComic_popup__trans">
+                              <select  name="trans" id="addComic_popup__trans-dropdown" class="addComic_popup__dropdown">
+                                   <option value="Đang cập nhật">-- Đang cập nhật --</option>
+                                   <option value="team lanh lung">Team lạnh lùng</option>
+                                   <option value="team vui nhộn">Team vui nhộn</option>
+                                   <option value="team ngọt ngào">Team ngọt ngào</option>
+                              </select>
+                         </div>
+
+                         <label for="addComic_popup__description-input">Mô tả</label>
+                         <div class="addComic_popup__description">
+                              <textarea name="mo_ta" id="addComic_popup__description-input" class="addComic_popup__input" placeholder="Hãy nhập mô tả"></textarea>
+                         </div>
+
+                         <label for="addComic_popup__status-dropdown">Trạng thái</label>
+                         <div class="addComic_popup__status">
+                              <select  name="status" id="addComic_popup__status-dropdown" class="addComic_popup__dropdown">
+                                   <option value="Đang cập nhật">Đang cập nhật</option>
+                                   <option value="Hoàn thành">Hoàn thành</option>
+                              </select>
+                         </div>
+
+                         <label for="addComic_popup__genre-dropdown">Thể loại <span style="color: red">*</span></label>
+                         <div class="addComic_popup__genres">
+                              <select  name="genre" id="addComic_popup__genre-dropdown" class="addComic_popup__dropdown" required>
+                                   <option value="" disabled selected>-- Chọn --</option>
+                                   <option value="Adventure">Adventure</option>
+                                   <option value="Action">Action</option>
+                                   <option value="Viễn tưởng">Viễn tưởng</option>
+                                   <option value="Huyền huyễn">Huyền huyễn</option>
+                              </select>
+                              <div class="addComic_popup__genre-list">
+                                   <!-- <div class="addComic_popup__genre-item">
+                                        <span>Adventure</span>
+                                        <input type="hidden" name="genres"  required>
+                                        <span><i class="fa-solid fa-circle-xmark"></i></span>
+                                   </div>
+                                   <div class="addComic_popup__genre-item">
+                                        <span>Adventure</span>
+                                        <input type="hidden" name="genres"  required>
+                                        <span><i class="fa-solid fa-circle-xmark"></i></span>
+                                   </div>
+                                   <div class="addComic_popup__genre-item" >
+                                        <span>Adventure</span>
+                                        <input type="hidden" name="genres"  required>
+                                        <span><i class="fa-solid fa-circle-xmark"></i></span>
+                                   </div>
+                                   <div class="addComic_popup__genre-item">
+                                        <span>Adventure</span>
+                                        <input type="hidden" name="genres"  required>
+                                        <span><i class="fa-solid fa-circle-xmark"></i></span>
+                                   </div>
+                                   <div class="addComic_popup__genre-item">
+                                        <span>Adventure</span>
+                                        <input type="hidden" name="genres"  required>
+                                        <span><i class="fa-solid fa-circle-xmark"></i></span>
+                                   </div> -->
+                              </div>
+                         </div>
+                    </form>
+                    <div class="addComic_button">
+                         <button>Hủy</button>
+                         <button type="submit" form="addComic_popup__form-container">Tạo</button>
+                    </div>
+               </div>
+           </div>
+
+     </div>
+</body>
+<script src="../public/js/private/addComic.js"></script>
+<script src="../public/js/shared/confirm.js"></script>
+<script src="../public/js/shared/search.js"></script>
+<script src="../public/js/shared/tool.js"></script>
+<script src="../public/js/shared/login.js"></script>
+</html>

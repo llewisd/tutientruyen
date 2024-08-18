@@ -1,0 +1,99 @@
+
+/* Filter */
+
+.body {
+     width: 100%;
+}
+.body_filter {
+     margin: 40px var(--margin-lr) 60px;
+     display: grid;
+     grid-template-columns: 0.5fr 3fr;
+     grid-template-rows: repeat(4, 1fr);
+     row-gap: 20px;
+     color: var(--opacity-white-color);
+     font-size: var(--font-size-20);
+}
+.body_filter__dropdown {
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  font-size: var(--font-size-16);
+  border-radius: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.body_filter__dropdown::after {
+     padding: 5px 10px;
+}
+
+/* List */
+
+.body_list {
+     margin: 0 var(--margin-lr);
+     margin-top: 30px;
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+     gap: 20px;
+     overflow: hidden;
+     max-height: calc(293px * 6);
+}
+
+.body_list__item {
+     width: 160px;
+     border-radius: 10px;
+     overflow: hidden;
+}
+
+.body_list__info {
+     height: 210px;
+     width: 100%;
+     border-radius: 10px;
+     position: relative;
+     display: inline-block;
+     overflow: hidden;
+}
+
+.body_list__info img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     border-radius: 10px;
+     transition: transform 0.1s ease;
+     transform-origin: center center;
+}
+
+.body_list__item:hover img {
+     transform: scale(1.1);
+} 
+
+.body_list__info span {
+     display: inline-block;
+     position: absolute;
+     top: 10px;
+     left: 0px;
+     background-color: var(--main-green-color);
+     padding: 5px 10px;
+     color: var(--white-color);
+}
+
+.body_list__name {
+     color: var(--opacity-white-color);
+     padding: 8px 10px 2px 10px ;
+     width: 100%;
+     text-align: center;
+     font-weight: var(--font-weight-bold);
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+
+.body_list__latest {
+     color: var(--opacity-white-color);
+     padding: 0 10px 10px 10px;
+     width: 100%;
+     text-align: center;
+     font-size: var(--font-size-12);
+}
+

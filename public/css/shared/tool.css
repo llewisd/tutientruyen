@@ -1,0 +1,23 @@
+.tool {
+     position: fixed;
+     right : 20px;
+     bottom: 30px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     row-gap: 5px;
+     background-color: rgba(0, 0, 0, 0.3);
+}
+
+.tool_item {
+    padding: 10px 14px;
+    color: var(--opacity-white-color);
+    font-size: var(--font-size-18);
+   
+}
+
+.tool_item:hover {
+     background-color: var(--main-green-color);
+     cursor: pointer;
+}

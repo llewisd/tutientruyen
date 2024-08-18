@@ -1,0 +1,99 @@
+<div style="display: none;" class="sign_window">
+     <div class="sign_window__popup">
+          <div class="sign_window__tag-block">
+               <div>
+                    <button style=" border-bottom: 3px solid var(--red-color); opacity: 1;" class="sign_window__tag sign_window__tag-signin">Đăng nhập</button>
+                    <button class="sign_window__tag sign_window__tag-signup">Đăng ký</button>
+               </div>
+               <div>
+                    <button><i class="fa-solid fa-xmark"></i></button>
+               </div>
+          </div>
+          
+          <div style="display: flex" class="sign_window__block-signin">
+               <form action="/login/signin/checkInfoSignin" method="post" id="sign_window__signin-form" class="sign_window__sign-form" autocomplete="off">
+                    <div class="sign_window__email-block sign_window__block">
+                         <label for="signin_email">Email</label>
+                         <input type="email" name="email" id="signin_email" placeholder="Hãy nhập email" required oninput="checkEmailValidate()">
+                    </div>
+                    <div class="sign_window__password-block sign_window__block">
+                         <label for="signin_password">Mật khẩu</label>
+                         <input type="password" name="password" id="signin_password" placeholder="Mật khẩu" required>
+                    </div>
+               </form>
+               <div class="sign_window__alert">
+                    <div style="display: none"><i class="fa-solid fa-circle-exclamation"></i> Email không hợp lệ</div>
+                    <div style="display: none"><i class="fa-solid fa-circle-exclamation"></i> Mật khẩu chưa chính xác</div>
+                    <div style="display: none"><i class="fa-solid fa-circle-check"></i> Thông tin hợp lệ</div>
+                    <div style="display: none"><i class="fa-solid fa-circle-exclamation"></i> Email chưa chính xác </div>
+               </div>
+               <div class="sign_window__support">
+                    <button>Quên mật khẩu</button>
+                    <button type="submit" form="sign_window__signin-form">Đăng nhập</button>
+               </div>
+               <div class="sign_window__select">-- hoặc  --</div>
+               <div class="sign_window__social">
+                    <!-- <a href="#" onclick="openCenteredWindow('/login/signin/auth/google', 600, 400); return false">-->
+                    <a href="/login/signin/auth/google">
+                         <span>Đăng nhập với</span>
+                         <i class="fa-brands fa-google"></i>
+                    </a>
+                    <a href="/login/signin/auth/facebook">
+                         <span>Đăng nhập với</span>
+                         <i class="fa-brands fa-facebook"></i>
+                    </a>
+               </div>
+          </div>
+
+          <div style="display: none" class="sign_window__block-signup">
+               <form action="/login/signup" method="post" id="sign_window__signup-form" class="sign_window__sign-form">
+                    <div class="sign_window__email-block sign_window__block">
+                         <label for="signup_email">Email</label>
+                         <input type="email" name="email" id="signup_email" placeholder="Hãy nhập email" required autocomplete="off">
+                    </div>
+                    <div class="sign_window__password-block sign_window__block">
+                         <label for="signup_password">Mật khẩu</label>
+                         <input type="password" name="password" id="signup_password" placeholder="Mật khẩu" required>
+                    </div>
+                    <div class="sign_window__name-block sign_window__block">
+                         <label for="signup_name">Tên người dùng</label>
+                         <input type="text" name="name" id="signup_name" placeholder="Nhập tên người dùng" required autocomplete="new-name">
+                    </div>
+                    
+               </form>
+               <div class="sign_window__alert">
+                    <div style="display: none"><i class="fa-solid fa-circle-exclamation"></i> Email đã có tài khoản</div>
+                    <div style="display: none"><i class="fa-solid fa-circle-exclamation"></i> Tên người dùng đã tồn tại</div>
+                    <div style="display: none"><i class="fa-solid fa-circle-check"></i> Thông tin hợp lệ</div>
+                    <div style="display: none"><i class="fa-solid fa-circle-exclamation"></i> Email không tồn tại</div>
+               </div>
+               <div class="sign_window__support">
+                    <button>Đã có tài khoản</button>
+                    <button type="submit" form="sign_window__signup-form">Đăng ký</button>
+               </div>
+          </div>
+     </div>
+ </div>
+
+
+ <!-- Quên mật khẩu -->
+ <div style="display: none" class="forgetpassword_block">
+     <div class="forgetpassword_popup">
+          <div class="forgetpassword_popup-exit">
+               <i class="fa-solid fa-xmark"></i>
+          </div>
+          <form action="/login/forgetPassword" method="post" class="forgetpassword_popup-body" id="forgetpassword_form" autocomplete="off">
+               <label for="email">Hãy nhập email</label>
+               <input type="email" name="email" id="email" placeholder="Email" required oninput="checkEmailValidateInForgetPassword()">
+          </form>
+          <div class="forgetpassword_popup-alert">
+               <div style="display: none"><i class="fa-solid fa-circle-exclamation"></i> Email không hợp lệ</div>
+               <div style="display: none"><i class="fa-solid fa-circle-exclamation"></i> Email không tồn tại</div>
+               <div style="display: none"><i class="fa-solid fa-circle-check"></i> Đã gửi mật khẩu . Hãy kiểm tra email</div>
+               <div style="display: none"><i class="fa-solid fa-circle-exclamation"></i> Email chưa được tạo tài khoản</div>
+          </div>
+          <div class="forgetpassword_popup-submit-btn">
+               <button type="submit" form="forgetpassword_form">Gửi</button>
+          </div>
+     </div>
+</div>

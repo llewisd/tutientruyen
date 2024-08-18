@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/shared/base.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+     <link rel="stylesheet" href="/css/shared/header.css">
+     <link rel="stylesheet" href="/css/shared/pagination.css">
+     <link rel="stylesheet" href="/css/shared/login.css">
+     <link rel="stylesheet" href="/css/private/filter.css">
+     <title>Welcome to tutientruyen</title>
+</head>
+<body>
+     <div class="app">
+          <!-- <div class="header">
+               <div class="header_ext">
+                    <a href="/" class="header_ext__logo">
+                         <img src="/images/local/white_logo.png" alt="logo">
+                    </a>
+                    <div class="header_ext__search">
+                         <input type="text" placeholder="Bạn đang tìm kiếm truyện gì">
+                         <a href="">
+                              <i class="fa-solid fa-magnifying-glass"></i>
+                         </a>
+                    </div>
+                    <button class="header_ext__signbutton">
+                         Đăng ký / Đăng nhập
+                    </button>
+               </div>
+               <div class="header_nav">
+                    <div class="header_nav__list">
+                         <a href="/" class="header_nav__item">Trang chủ</a>
+                         <a href="" class="header_nav__item">Thể loại <i class="fa-solid fa-caret-down"></i></i></a>
+                         <a href="" class="header_nav__item">Nhóm dịch <i class="fa-solid fa-caret-down"></i></i></a>
+                         <a href="" class="header_nav__item">Đăng ký nhóm dịch</a>
+                    </div>
+               </div>
+          </div> -->
+          <%- include('partials/header') %>
+          
+          <div class="body">
+               <div class="body_filter">
+
+                    <div class="body_filter__genre">Thể loại :</div>
+                    <div class="body_filter__genre-list">
+                         <select name="genre" id="body_filter__genre-dropdown" class="body_filter__dropdown">
+                              <option value="all">-- Tất cả --</option>
+                              <% all_genre.forEach(item => { %>
+                                   <% if(item.ten === genre) { %>
+                                        <option value="<%= item.ten %>" selected><%= item.ten %></option>
+                                   <% } else { %>
+                                        <option value="<%= item.ten %>"><%= item.ten %></option>
+                                   <% } %>
+                              <% }) %>
+                         </select>
+                    </div>
+
+                    <div class="body_filter__translator">Tác giả :</div>
+                    <div class="body_filter__translator-list">
+                         <select name="trans" id="body_filter__translator-dropdown" class="body_filter__dropdown">
+                              <option value="all">-- Tất cả --</option>
+                         </select>
+                    </div>
+
+                    <div class="body_filter__status">Tình trạng :</div>
+                    <div class="body_filter__status-list">
+                         <select name="status" id="body_filter__status-dropdown" class="body_filter__dropdown">
+                              <option value="all">-- Tất cả --</option>
+                              <% if(status === "Đang cập nhật") { %>
+                                   <option value="Đang cập nhật" selected>Đang cập nhật</option>
+                                   <option value="Hoàn thành">Hoàn thành</option>
+                              <% } else if (status === "Hoàn thành") { %>
+                                   <option value="Đang cập nhật">Đang cập nhật</option>
+                                   <option value="Hoàn thành" selected>Hoàn thành</option>
+                              <% } else {%>
+                                   <option value="Đang cập nhật">Đang cập nhật</option>
+                                   <option value="Hoàn thành">Hoàn thành</option>
+                              <% } %>
+                         </select>
+                    </div>
+
+                    <div class="body_filter__arrange">Sắp xếp theo :</div>
+                    <div class="body_filter__arrange-list">
+                         <select name="arrange" id="body_filter__arrange-dropdown" class="body_filter__dropdown">
+                              <% if(arrange === "date") { %>
+                                   <option value="date" selected>Ngày cập nhật</option>
+                                   <option value="view">Lượt xem nhiều nhất</option>
+                              <% } else { %>
+                                   <option value="date">Ngày cập nhật</option>
+                                   <option value="view" selected>Lượt xem nhiều nhất</option>
+                              <% } %>
+                         </select>
+                    </div>
+
+               </div>
+               <div class="body_list">
+                    <% comicInfo.forEach(item => { %>
+                         <div class="body_list__item">
+                              <a href="/truyen/<%= item.link %>" class="body_list__info">
+                                   <img src="<%= item.anh %>" alt="<%= item.ten %>">
+                                   <span><%= getTimeSinceLastUpdate(item.cap_nhat) %></span>
+                              </a>
+                              <a href="/truyen/<%= item.link %>" class="body_list__name"><%= item.ten %></a>
+                              <a href="/truyen/<%= item.link %>/chapter-<%= item.chuong %>" class="body_list__latest">Chương <%= item.chuong %></a>
+                         </div>
+                    <% }) %>
+               </div>
+
+               <div class="pagination">
+                    <% if (currentPage !== 1) { %>
+                         <a href="<%= pagination_url %><%= currentPage - 1 %>" class="pagination__before">
+                              <i class="fa-solid fa-arrow-left"></i>
+                              <span>TRƯỚC</span>
+                         </a>
+                    <% } else { %>
+                         <button style="opacity: 0.6; cursor: not-allowed;" class="pagination__before">
+                              <i class="fa-solid fa-arrow-left"></i>
+                              <span>TRƯỚC</span>
+                         </button>
+                    <% } %>
+                    <div class="pagination__main">
+                         <span>Trang</span>
+                         <div class="pagination__select">
+                              <span><%= currentPage %></span>
+                              <i class="fa-solid fa-angle-down fa-2xs"></i>
+                              <div style="display: none"  class="pagination__option">
+                                   <% for(i = 1; i <= totalPages; i++) { %>
+                                        <a href="<%= pagination_url %><%= i %>" class="pagination__option-link">
+                                             <%= i %>
+                                        </a>
+                                   <% } %>
+                              </div>
+                         </div>
+                         <span>/</span>
+                         <span><%= totalPages %></span>
+                    </div>
+                    <% if (currentPage !== totalPages) { %>
+                         <a href="<%= pagination_url %><%= currentPage + 1 %>" class="pagination__after">
+                              <span>SAU</span>
+                              <i class="fa-solid fa-arrow-right"></i>
+                         </a>
+                    <% } else { %>
+                         <button style="opacity: 0.6; cursor: not-allowed;" class="pagination__after">
+                              <span>SAU</span>
+                              <i class="fa-solid fa-arrow-right"></i>
+                         </button>
+                    <% } %>
+               </div>
+          </div>
+
+          <!-- Cửa sổ pop up đăng ký / đăng nhập -->
+          <%- include('partials/login') %>
+
+     </div>
+</body>
+<script src="/js/shared/search.js"></script>
+<script src="/js/shared/login.js"></script>
+<script src="/js/private/filter.js"></script>
+</html>
