@@ -30,56 +30,57 @@
 
                     <div class="body_comic__list">
 
-                         <div class="body_comic__item">
-                              <div class="body_comic__item-img">
-                                   <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="avatar">
-                              </div>
-                              <div class="body_comic__item-content" data-truyen-id="">
-                                   <div class="body_comic__item-first">
-                                        <div class="body_comic__item-name">
-                                             <div>Đại quản gia là ma hoàng</div>
-                                             <div><i class="fa-solid fa-pen"></i></div>
-                                        </div>
-                                        <div class="body_comic__item-first-support">
-                                             <div class="body_comic__item-delete">
-                                                  <i class="fa-regular fa-trash-can"></i>
-                                             </div>
-                                             <div class="body_comic__item-date">
-                                                  <i class="fa-regular fa-clock"></i>
-                                                  <span>13/08/2020</span>
-                                             </div>
-                                        </div>
+                         <% created_comic.forEach(item => { %>
+                              <div class="body_comic__item">
+                                   <div class="body_comic__item-img">
+                                        <img src="<%= item.anh %>" alt="avatar">
                                    </div>
-     
-                                   <div class="body_comic__item-second">
-                                        <div class="body_comic__item-moreInfo">
-                                             <div>Số chương:  400</div>
-                                             <div> | </div>
-                                             <div>Tình trạng:  Đang tiến hành</div>
-                                        </div>
-                                   </div>
-     
-                                   <div class="body_comic__item-third">
-                                        <div class="body_comic__item-error-view">
-                                             <div class="body_comic__item-flag">
-                                                  <i class="fa-solid fa-flag"></i>
-                                                  <span>Báo lỗi : </span>
-                                                  <span>0</span>
-                                                  <button>reset</button>
+                                   <div class="body_comic__item-content" data-truyen-id="<%= item._id %>">
+                                        <div class="body_comic__item-first">
+                                             <div class="body_comic__item-name">
+                                                  <div><%= item.ten %></div>
+                                                  <div><i class="fa-solid fa-pen"></i></div>
                                              </div>
-                                             <div class="body_comic__item-view">
-                                                  <i class="fa-regular fa-eye"></i>
-                                                  <span>3000</span>
+                                             <div class="body_comic__item-first-support">
+                                                  <div class="body_comic__item-delete">
+                                                       <i class="fa-regular fa-trash-can"></i>
+                                                  </div>
+                                                  <div class="body_comic__item-date">
+                                                       <i class="fa-regular fa-clock"></i>
+                                                       <span><%= (item.cap_nhat) ? changeTimetoDDMMYYYY(item.cap_nhat) : changeTimetoDDMMYYYY(Date.now()) %></span>
+                                                  </div>
                                              </div>
                                         </div>
-                                        <div class="body_comic__item-detail">
-                                             <i class="fa-solid fa-arrow-right-long"></i>
+          
+                                        <div class="body_comic__item-second">
+                                             <div class="body_comic__item-moreInfo">
+                                                  <div>Số chương: <%= (item.chuong) ? item.chuong : 0 %></div>
+                                                  <div> | </div>
+                                                  <div>Tình trạng:  <%= item.trang_thai %></div>
+                                             </div>
                                         </div>
-                                   </div>
+          
+                                        <div class="body_comic__item-third">
+                                             <div class="body_comic__item-error-view">
+                                                  <div class="body_comic__item-flag">
+                                                       <i class="fa-solid fa-flag"></i>
+                                                       <span>Báo lỗi : </span>
+                                                       <span><%= item.bao_loi %></span>
+                                                       <button>reset</button>
+                                                  </div>
+                                                  <div class="body_comic__item-view">
+                                                       <i class="fa-regular fa-eye"></i>
+                                                       <span><%= item.tong_luot_xem %></span>
+                                                  </div>
+                                             </div>
+                                             <div class="body_comic__item-detail">
+                                                  <i class="fa-solid fa-arrow-right-long"></i>
+                                             </div>
+                                        </div>
 
+                                   </div>
                               </div>
-                         </div>
-
+                         <% }) %>
                     </div>
                </div>
           </div>
@@ -110,7 +111,7 @@
                     <div class="addComic_exit">
                          <div><i class="fa-regular fa-circle-xmark"></i></div>
                     </div>
-                    <form action="/addComic/create" method="post" id="addComic_popup__form-container" class="addComic_popup__container">
+                    <form action="" method="post" id="addComic_popup__form-container" class="addComic_popup__container">
                          <label for="comic_name">Tên <span style="color: red">*</span></label>
                          <div class="addComic_popup__name">
                               <input type="text" name="comic_name" id="comic_name" class="addComic_popup__input" placeholder="Tên" required>
@@ -159,6 +160,16 @@
                               </div>
                          </div>
                     </form>
+                    <div class="addComic_alert">
+                         <div style="display: none" class="addComic_alert__warning">
+                              <i class="fa-solid fa-triangle-exclamation"></i>
+                              <span>Tên truyện đã tồn tại trên website</span>
+                         </div>
+                         <div style="display: none" class="addComic_alert__success">
+                              <i class="fa-solid fa-circle-check"></i>
+                              <span>Truyện đã được tạo thành công</span>
+                         </div>
+                    </div>
                     <div class="addComic_button">
                          <button>Hủy</button>
                          <button type="submit" form="addComic_popup__form-container">Tạo</button>

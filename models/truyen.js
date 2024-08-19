@@ -1,21 +1,22 @@
 const mongoose = require('mongoose');
 const capitalizeFirstLetter = require('../global').capitalizeFirstLetter;
 const capitalizeWords = require('../global').capitalizeWords;
+const stringToSlug = require('../global').stringToSlug;
 
-function stringToSlug(str) {
-     let from = "àáãảạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệđùúủũụưừứửữựòóỏõọôồốổỗộơờớởỡợìíỉĩịäëïîöüûñçýỳỹỵỷ",
-         to   = "aaaaaaaaaaaaaaaaaeeeeeeeeeeeduuuuuuuuuuuoooooooooooooooooiiiiiaeiiouuncyyyyy";
-     for (let i=0, l=from.length ; i < l ; i++) {
-       str = str.replace(RegExp(from[i], "gi"), to[i]);
-     }
-     str = str.toLowerCase()
-           .trim()
-           .replace(/^[^\w]+|[^\w]+$/g, '')
-           .replace(/[^\w\s]/g, '')
-           .replace(/[^a-z0-9\-]/g, '-')
-           .replace(/-+/g, '-');
-     return str;
-}
+// function stringToSlug(str) {
+//      let from = "àáãảạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệđùúủũụưừứửữựòóỏõọôồốổỗộơờớởỡợìíỉĩịäëïîöüûñçýỳỹỵỷ",
+//          to   = "aaaaaaaaaaaaaaaaaeeeeeeeeeeeduuuuuuuuuuuoooooooooooooooooiiiiiaeiiouuncyyyyy";
+//      for (let i=0, l=from.length ; i < l ; i++) {
+//        str = str.replace(RegExp(from[i], "gi"), to[i]);
+//      }
+//      str = str.toLowerCase()
+//            .trim()
+//            .replace(/^[^\w]+|[^\w]+$/g, '')
+//            .replace(/[^\w\s]/g, '')
+//            .replace(/[^a-z0-9\-]/g, '-')
+//            .replace(/-+/g, '-');
+//      return str;
+// }
 
 const truyen_Schema = mongoose.Schema({
      ten: {
@@ -26,7 +27,10 @@ const truyen_Schema = mongoose.Schema({
           type: String,
           default: "Đang cập nhật"
      },
-     link: String,
+     link: {
+          type: String,
+          unique: true
+     },
      anh: String,
      tac_gia: {
           type: String,
@@ -47,6 +51,10 @@ const truyen_Schema = mongoose.Schema({
      the_loai: {
           type: [mongoose.Schema.Types.ObjectId],
           ref: 'Theloai'
+     },
+     user_upload: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Taikhoan'
      }
 }, { collection: 'Truyen',  versionKey: false });
 

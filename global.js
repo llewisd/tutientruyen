@@ -106,6 +106,51 @@ function capitalizeWords(str) {
   }).join(' ');
 }
 
+function changeTimetoDDMMYYYY(value) {
+  const date = new Date(value);
+
+  // Kiểm tra xem đối tượng Date có hợp lệ không
+  if (isNaN(date.getTime())) {
+    throw new Error("Invalid date string");
+  }
+
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0
+  const year = date.getFullYear();
+
+  return `${day}/${month}/${year}`;
+}
+
+function stringToSlugWithUnderscore(str) {
+  let from = "àáãảạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệđùúủũụưừứửữựòóỏõọôồốổỗộơờớởỡợìíỉĩịäëïîöüûñçýỳỹỵỷ",
+      to   = "aaaaaaaaaaaaaaaaaeeeeeeeeeeeduuuuuuuuuuuoooooooooooooooooiiiiiaeiiouuncyyyyy";
+  for (let i=0, l=from.length ; i < l ; i++) {
+    str = str.replace(RegExp(from[i], "gi"), to[i]);
+  }
+  str = str.toLowerCase()
+        .trim()
+        .replace(/^[^\w]+|[^\w]+$/g, '')
+        .replace(/[^\w\s]/g, '')
+        .replace(/[^a-z0-9\-]/g, '_')
+        .replace(/-+/g, '_');
+  return str;
+}
+
+function stringToSlug(str) {
+  let from = "àáãảạăằắẳẵặâầấẩẫậèéẻẽẹêềếểễệđùúủũụưừứửữựòóỏõọôồốổỗộơờớởỡợìíỉĩịäëïîöüûñçýỳỹỵỷ",
+      to   = "aaaaaaaaaaaaaaaaaeeeeeeeeeeeduuuuuuuuuuuoooooooooooooooooiiiiiaeiiouuncyyyyy";
+  for (let i=0, l=from.length ; i < l ; i++) {
+    str = str.replace(RegExp(from[i], "gi"), to[i]);
+  }
+  str = str.toLowerCase()
+        .trim()
+        .replace(/^[^\w]+|[^\w]+$/g, '')
+        .replace(/[^\w\s]/g, '')
+        .replace(/[^a-z0-9\-]/g, '-')
+        .replace(/-+/g, '-');
+  return str;
+}
+
 
 module.exports = {
   getTimeSinceLastUpdate, 
@@ -113,6 +158,9 @@ module.exports = {
   formatViewsWithSpace,
   formatViewsNoSpace,
   capitalizeWords,
+  changeTimetoDDMMYYYY,
+  stringToSlugWithUnderscore,
+  stringToSlug,
   google: {
     google_Client_Id: '47329878494-ru5n5t5an4b4l5f9567lmfjsq869l2n7.apps.googleusercontent.com',
     google_Client_Secret: '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',
