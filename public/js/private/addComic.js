@@ -21,14 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Xét border cho item
-document.addEventListener('DOMContentLoaded', () => {
+function setBorderForItem() {
      const body_comic__item = document.querySelectorAll('.body_comic__item');
      body_comic__item.forEach(item => {
           const error_flag = item.querySelector('.body_comic__item-flag span:nth-of-type(2)');
           if(error_flag.innerHTML === '0') item.style.border = '3px solid var(--green-color)';
           else item.style.border = '3px solid var(--orange-color)';
      });
-});
+};
 
 // Tạo hoặc Hủy truyện
 document.addEventListener('DOMContentLoaded', () => {
@@ -217,8 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
      });
 });
 
-// Chỉnh sửa truyện đã tạo
-document.addEventListener('DOMContentLoaded', () => {
+// Cập nhật truyện đã tạo
+function handleForUpdateComic() {
      const change_comic_button = document.querySelectorAll('.body_comic__item-name div:nth-of-type(2)');
      change_comic_button.forEach(item => {
           item.addEventListener('click', async function(e) {
@@ -439,6 +439,136 @@ document.addEventListener('DOMContentLoaded', () => {
                addComic_form.addEventListener('submit', handleUpdate);
           });
      });
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+     // Set border cho item
+     setBorderForItem()
+     // Cập nhật truyện đã tạo
+     handleForUpdateComic();
+})
+
+// Chức năng tìm kiếm
+document.addEventListener('DOMContentLoaded', () => {
+     const search_input = document.querySelector('.body_header__search-bar');
+     const comic_data = JSON.parse(dataFromServer);
+     search_input.addEventListener('input', function(e) {
+          const query = e.target.value;
+
+          if(query.length > 1) {
+               search(query, comic_data);
+          }
+          else {
+               document.querySelector('.body_comic__list').innerHTML = comic_data.map(item => `
+                    <div class="body_comic__item">
+                         <div class="body_comic__item-img">
+                              <img src="${item.anh}" alt="avatar">
+                         </div>
+                         <div class="body_comic__item-content" data-truyen-id="${item._id}">
+                              <div class="body_comic__item-first">
+                                   <div class="body_comic__item-name">
+                                        <div>${item.ten}</div>
+                                        <div><i class="fa-solid fa-pen"></i></div>
+                                   </div>
+                                   <div class="body_comic__item-first-support">
+                                        <div class="body_comic__item-delete">
+                                             <i class="fa-regular fa-trash-can"></i>
+                                        </div>
+                                        <div class="body_comic__item-date">
+                                             <i class="fa-regular fa-clock"></i>
+                                             <span>${ (item.cap_nhat) ? changeTimetoDDMMYYYY(item.cap_nhat) : changeTimetoDDMMYYYY(Date.now()) }</span>
+                                        </div>
+                                   </div>
+                              </div>
+     
+                              <div class="body_comic__item-second">
+                                   <div class="body_comic__item-moreInfo">
+                                        <div>Số chương: ${ (item.chuong) ? item.chuong : 0  }</div>
+                                        <div> | </div>
+                                        <div>Tình trạng:  ${ item.trang_thai }</div>
+                                   </div>
+                              </div>
+     
+                              <div class="body_comic__item-third">
+                                   <div class="body_comic__item-error-view">
+                                        <div class="body_comic__item-flag">
+                                             <i class="fa-solid fa-flag"></i>
+                                             <span>Báo lỗi : </span>
+                                             <span>${ item.bao_loi }</span>
+                                        </div>
+                                        <div class="body_comic__item-view">
+                                             <i class="fa-regular fa-eye"></i>
+                                             <span>${ item.tong_luot_xem }</span>
+                                        </div>
+                                   </div>
+                                   <a href="/addChapter/${item.link}/${item._id}" class="body_comic__item-detail">
+                                        <i class="fa-solid fa-arrow-right-long"></i>
+                                   </a>
+                              </div>
+     
+                         </div>
+                    </div>
+               `).join('');
+          }
+          setBorderForItem()
+          handleForUpdateComic();
+     });
+     function search(query, data) {
+          const results = data.filter(item => item.ten.toLowerCase().includes(query.toLowerCase()));
+          
+          // Hiển thị kết quả
+          const resultBox = document.querySelector('.body_comic__list');
+          resultBox.innerHTML = results.map(item => `
+               <div class="body_comic__item">
+                    <div class="body_comic__item-img">
+                         <img src="${item.anh}" alt="avatar">
+                    </div>
+                    <div class="body_comic__item-content" data-truyen-id="${item._id}">
+                         <div class="body_comic__item-first">
+                              <div class="body_comic__item-name">
+                                   <div>${item.ten}</div>
+                                   <div><i class="fa-solid fa-pen"></i></div>
+                              </div>
+                              <div class="body_comic__item-first-support">
+                                   <div class="body_comic__item-delete">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                   </div>
+                                   <div class="body_comic__item-date">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span>${ (item.cap_nhat) ? changeTimetoDDMMYYYY(item.cap_nhat) : changeTimetoDDMMYYYY(Date.now()) }</span>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="body_comic__item-second">
+                              <div class="body_comic__item-moreInfo">
+                                   <div>Số chương: ${ (item.chuong) ? item.chuong : 0  }</div>
+                                   <div> | </div>
+                                   <div>Tình trạng:  ${ item.trang_thai }</div>
+                              </div>
+                         </div>
+
+                         <div class="body_comic__item-third">
+                              <div class="body_comic__item-error-view">
+                                   <div class="body_comic__item-flag">
+                                        <i class="fa-solid fa-flag"></i>
+                                        <span>Báo lỗi : </span>
+                                        <span>${ item.bao_loi }</span>
+                                   </div>
+                                   <div class="body_comic__item-view">
+                                        <i class="fa-regular fa-eye"></i>
+                                        <span>${ item.tong_luot_xem }</span>
+                                   </div>
+                              </div>
+                              <a href="/addChapter/${item.link}/${item._id}" class="body_comic__item-detail">
+                                   <i class="fa-solid fa-arrow-right-long"></i>
+                              </a>
+                         </div>
+
+                    </div>
+               </div>
+          `).join('');
+      }
 });
 
 

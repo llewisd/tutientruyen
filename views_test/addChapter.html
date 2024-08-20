@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="../public/css/shared/base.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+     <link rel="stylesheet" href="../public/css/shared/header.css">
+     <link rel="stylesheet" href="../public/css/shared/tool.css">
+     <link rel="stylesheet" href="../public/css/shared/login.css">
+     <link rel="stylesheet" href="../public/css/shared/confirm.css">
+     <link rel="stylesheet" href="../public/css/private/addChapter.css">
+     <title>Welcome to tutientruyen</title>
+</head>
+<body>
+     <div class="app">
+          <div class="header">
+               <div class="header_ext">
+                    <a href="" class="header_ext__logo">
+                         <img src="../public/images/local/white_logo.png" alt="logo">
+                    </a>
+                    <div class="header_ext__search">
+                         <input type="text" placeholder="Bạn đang tìm kiếm truyện gì" oninput="debounceSearch()">
+                         <a href="">
+                              <i class="fa-solid fa-magnifying-glass"></i>
+                         </a>
+                         <div style="display: none" class="header_ext__dropdown">
+                              <a href="" class="header_ext__dropdown-item">
+                                   <div class="header_ext__dropdown-img">
+                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="Nguyên tôn">
+                                   </div>
+                                   <div class="header_ext__dropdown-info">
+                                        <div class="header_ext__dropdown-info-name">Nguyên tôn Nguyên tôn Nguyên tôn Nguyên tôn Nguyên tôn</div>
+                                        <div class="header_ext__dropdown-info-chapter">Chương 1000</div>
+                                   </div>
+                              </a>
+                              <a href="" class="header_ext__dropdown-item">
+                                   <div class="header_ext__dropdown-img">
+                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="Nguyên tôn">
+                                   </div>
+                                   <div class="header_ext__dropdown-info">
+                                        <div class="header_ext__dropdown-info-name">Nguyên tôn</div>
+                                        <div class="header_ext__dropdown-info-chapter">Chương 1000</div>
+                                   </div>
+                              </a>
+                              <a href="" class="header_ext__dropdown-item">
+                                   <div class="header_ext__dropdown-img">
+                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="Nguyên tôn">
+                                   </div>
+                                   <div class="header_ext__dropdown-info">
+                                        <div class="header_ext__dropdown-info-name">Nguyên tôn</div>
+                                        <div class="header_ext__dropdown-info-chapter">Chương 1000</div>
+                                   </div>
+                              </a>
+                              <div style="display: none" class="header_ext__dropdown-none">
+                                   Không tìm được truyện !
+                              </div>
+                         </div>
+                    </div>
+                    <button style="display: none;" class="header_ext__signbutton">
+                         Đăng ký / Đăng nhập
+                    </button>
+
+                    <button class="header_ext__userInfo">
+                         <div class="header_ext__userInfo-img">
+                              <img src="../public/images/local/anonymous.png" alt="anonymous">
+                         </div>
+                         <div class="header_ext__userInfo-name">
+                              DDUowngf gia tam thieeu
+                         </div>
+                         <div class="header_ext__userInfo-arrrow">
+                              <i class="fa-solid fa-caret-down"></i>
+                         </div>
+
+                         <div class="header_ext__userInfo-dropdown">
+                              <div class="header_ext__userInfo-dropdown-item">Cài đặt</div>
+                              <div class="header_ext__userInfo-dropdown-item">Thoát</div>
+                         </div>
+                    </button>
+               </div>
+               <div class="header_nav">
+                    <div class="header_nav__list">
+                         <a href="" class="header_nav__item">Trang chủ</a>
+                         <div class="header_nav__block">
+                              <a href="" class="header_nav__item">Thể loại <i class="fa-solid fa-caret-down"></i></i></a>
+                              <div class="header_nav__item-dropdown">
+                                   <div class="header_nav__item-dropdown-block">
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                        <a href="">Adventure</a>
+                                        <a href="">Action</a>
+                                   </div>
+                              </div>
+                         </div>
+                         <a href="" class="header_nav__item">Nhóm dịch <i class="fa-solid fa-caret-down"></i></i></a>
+                         <a href="" class="header_nav__item">Đăng ký nhóm dịch</a>
+                    </div>
+               </div>
+          </div>
+
+          <div class="body">
+               <div class="body_block">
+                    <div class="body_header">
+                         <a href=""><i class="fa-solid fa-arrow-left-long"></i></a>
+                    </div>
+                    <div class="body_name">
+                         <div>Đại quản gia là ma hoàng</div>
+                    </div>
+                    <div class="body_list">
+
+                         <div class="body_item">
+                              <div class="body_item__head">
+                                   <div class="body_item__chapter">
+                                        Chương 100
+                                   </div>     
+                                   <div class="body_item__icon">
+                                        <div><i class="fa-solid fa-pen"></i></div>
+                                        <div><i class="fa-solid fa-trash"></i></div>
+                                   </div>
+                              </div>
+                              <div class="body_item__foot">
+                                   <div class="body_item__calendar">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span>13/08/2024</span>
+                                   </div>
+                                   <div class="body_item__error">
+                                        <div>
+                                             <i class="fa-solid fa-flag"></i>
+                                             <span>Báo lỗi : </span>
+                                             <span>0</span>
+                                        </div>
+                                        <button>reset</button>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="body_item">
+                              <div class="body_item__head">
+                                   <div class="body_item__chapter">
+                                        Chương 100
+                                   </div>     
+                                   <div class="body_item__icon">
+                                        <div><i class="fa-solid fa-pen"></i></div>
+                                        <div><i class="fa-solid fa-trash"></i></div>
+                                   </div>
+                              </div>
+                              <div class="body_item__foot">
+                                   <div class="body_item__calendar">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span>13/08/2024</span>
+                                   </div>
+                                   <div class="body_item__error">
+                                        <i class="fa-solid fa-flag"></i>
+                                        <span>Báo lỗi : </span>
+                                        <span>0</span>
+                                        <button>reset</button>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="body_item">
+                              <div class="body_item__head">
+                                   <div class="body_item__chapter">
+                                        Chương 100
+                                   </div>     
+                                   <div class="body_item__icon">
+                                        <div><i class="fa-solid fa-pen"></i></div>
+                                        <div><i class="fa-solid fa-trash"></i></div>
+                                   </div>
+                              </div>
+                              <div class="body_item__foot">
+                                   <div class="body_item__calendar">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span>13/08/2024</span>
+                                   </div>
+                                   <div class="body_item__error">
+                                        <i class="fa-solid fa-flag"></i>
+                                        <span>Báo lỗi : </span>
+                                        <span>0</span>
+                                        <button>reset</button>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="body_item">
+                              <div class="body_item__head">
+                                   <div class="body_item__chapter">
+                                        Chương 100
+                                   </div>     
+                                   <div class="body_item__icon">
+                                        <div><i class="fa-solid fa-pen"></i></div>
+                                        <div><i class="fa-solid fa-trash"></i></div>
+                                   </div>
+                              </div>
+                              <div class="body_item__foot">
+                                   <div class="body_item__calendar">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span>13/08/2024</span>
+                                   </div>
+                                   <div class="body_item__error">
+                                        <i class="fa-solid fa-flag"></i>
+                                        <span>Báo lỗi : </span>
+                                        <span>0</span>
+                                        <button>reset</button>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="body_item">
+                              <div class="body_item__head">
+                                   <div class="body_item__chapter">
+                                        Chương 100
+                                   </div>     
+                                   <div class="body_item__icon">
+                                        <div><i class="fa-solid fa-pen"></i></div>
+                                        <div><i class="fa-solid fa-trash"></i></div>
+                                   </div>
+                              </div>
+                              <div class="body_item__foot">
+                                   <div class="body_item__calendar">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span>13/08/2024</span>
+                                   </div>
+                                   <div class="body_item__error">
+                                        <i class="fa-solid fa-flag"></i>
+                                        <span>Báo lỗi : </span>
+                                        <span>0</span>
+                                        <button>reset</button>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="body_item">
+                              <div class="body_item__head">
+                                   <div class="body_item__chapter">
+                                        Chương 100
+                                   </div>     
+                                   <div class="body_item__icon">
+                                        <div><i class="fa-solid fa-pen"></i></div>
+                                        <div><i class="fa-solid fa-trash"></i></div>
+                                   </div>
+                              </div>
+                              <div class="body_item__foot">
+                                   <div class="body_item__calendar">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span>13/08/2024</span>
+                                   </div>
+                                   <div class="body_item__error">
+                                        <i class="fa-solid fa-flag"></i>
+                                        <span>Báo lỗi : </span>
+                                        <span>0</span>
+                                        <button>reset</button>
+                                   </div>
+                              </div>
+                         </div>
+
+                    </div>
+               </div>
+          </div>
+
+          <!-- Nút dấu cộng để thêm chapter -->
+          <div class="add_btn__footer">
+               <i class="fa-solid fa-plus"></i>
+          </div>
+
+          <!-- Block tạo Chapter -->
+          <div style="display: none" class="chapter_block">
+               <div class="chapter_popup">
+                    <div class="chapter_exit">
+                         <div><i class="fa-regular fa-circle-xmark"></i></div>
+                    </div>
+                    <form action="" class="chapter_form" id="chapter_popup__form-container">
+                         <label for="chapter_form__input-chuong" class="chapter_form__label">Chương</label>
+                         <input type="text" name="chapter" class="chapter_form__input" id="chapter_form__input-chuong" required>
+
+                         <label for="chapter_form__input-img" class="chapter_form__label">Ảnh</label>
+                         <div class="chapter_form__img-block">
+                              <div class="chapter_form__img-input">
+                                   <div class="chapter_form__img-view"><i class="fa-solid fa-eye"></i></div>
+                                   <input type="file" name="form_image" id="chapter_form__input-img" style="display: none">
+                                   <div class="chapter_form__img-input-btn">Thêm ảnh</div>
+                              </div>
+                              <div class="chapter_form__img-list">
+                                   <!-- <div class="chapter_form__img-item">
+                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="">
+                                        <div><i class="fa-solid fa-circle-xmark"></i></div>
+                                   </div>
+                                   <div class="chapter_form__img-item">
+                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="">
+                                        <div><i class="fa-solid fa-circle-xmark"></i></div>
+                                   </div> -->
+                              </div>
+                              
+                         </div>
+                    </form>
+                    <div class="chapter_form__alert">
+                         <div style="display: none" class="chapter_form__warning">
+                              <i class="fa-solid fa-triangle-exclamation"></i>
+                              <span>Vui lòng nhập số</span>
+                         </div>
+                         <div style="display: none" class="chapter_form__success">
+                              <i class="fa-solid fa-circle-check"></i>
+                              <span>Đã tạo thành công</span>
+                         </div>
+                    </div>
+                    <div class="chapter_form__button">
+                         <button>Hủy</button>
+                         <button type="submit" form="chapter_popup__form-container">Tạo</button>
+                    </div>
+
+               </div>
+          </div>
+
+     </div>
+</body>
+
+<script src="../public/js/private/addChapter.js"></script>
+<script src="../public/js/shared/confirm.js"></script>
+<script src="../public/js/shared/search.js"></script>
+<script src="../public/js/shared/tool.js"></script>
+<script src="../public/js/shared/login.js"></script>
+</html>

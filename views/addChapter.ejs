@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/shared/base.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+     <link rel="stylesheet" href="/css/shared/header.css">
+     <link rel="stylesheet" href="/css/shared/tool.css">
+     <link rel="stylesheet" href="/css/shared/login.css">
+     <link rel="stylesheet" href="/css/shared/confirm.css">
+     <link rel="stylesheet" href="/css/private/addChapter.css">
+     <title>Welcome to tutientruyen</title>
+</head>
+<body>
+     <div class="app">
+          <%- include('partials/header') %>
+
+          <div class="body">
+               <div class="body_block">
+                    <div class="body_header">
+                         <a href="/addComic"><i class="fa-solid fa-arrow-left-long"></i></a>
+                    </div>
+                    <div class="body_name">
+                         <div><%= comic_name %></div>
+                    </div>
+                    <div class="body_list">
+                         <% chapterInfo.forEach(item => { %>
+                              <div class="body_item">
+                                   <div class="body_item__head">
+                                        <div class="body_item__chapter">
+                                             Chương <%= item.chuong %>
+                                        </div>     
+                                        <div class="body_item__icon">
+                                             <div><i class="fa-solid fa-pen"></i></div>
+                                             <div><i class="fa-solid fa-trash"></i></div>
+                                        </div>
+                                   </div>
+                                   <div class="body_item__foot">
+                                        <div class="body_item__calendar">
+                                             <i class="fa-regular fa-clock"></i>
+                                             <span><%= changeTimetoDDMMYYYY(item.cap_nhat) %></span>
+                                        </div>
+                                        <div class="body_item__error">
+                                             <div>
+                                                  <i class="fa-solid fa-flag"></i>
+                                                  <span>Báo lỗi : </span>
+                                                  <span><%= item.bao_loi %></span>
+                                             </div>
+                                             <button>reset</button>
+                                        </div>
+                                   </div>
+                              </div>
+                         <% }) %>
+
+                    </div>
+               </div>
+          </div>
+
+          <!-- Cửa sổ pop up đăng ký / đăng nhập -->
+          <%- include('partials/login') %>
+
+          <!-- Nút dấu cộng để thêm chapter -->
+          <div class="add_btn__footer">
+               <i class="fa-solid fa-plus"></i>
+          </div>
+
+          <!-- Block tạo Chapter -->
+          <div style="display: none" class="chapter_block">
+               <div class="chapter_popup">
+                    <div class="chapter_exit">
+                         <div><i class="fa-regular fa-circle-xmark"></i></div>
+                    </div>
+                    <form action="" class="chapter_form" id="chapter_popup__form-container" autocomplete="off">
+                         <label for="chapter_form__input-chuong" class="chapter_form__label">Chương</label>
+                         <input type="text" name="chapter" class="chapter_form__input" id="chapter_form__input-chuong" required>
+
+                         <label for="chapter_form__input-img" class="chapter_form__label">Ảnh</label>
+                         <div class="chapter_form__img-block">
+                              <div class="chapter_form__img-input">
+                                   <div class="chapter_form__img-view"><i class="fa-solid fa-eye"></i></div>
+                                   <input type="file" name="form_image" id="chapter_form__input-img" style="display: none">
+                                   <div class="chapter_form__img-input-btn">Thêm ảnh</div>
+                              </div>
+                              <div class="chapter_form__img-list">
+                                   <!-- <div class="chapter_form__img-item">
+                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="">
+                                        <div><i class="fa-solid fa-circle-xmark"></i></div>
+                                   </div>
+                                   <div class="chapter_form__img-item">
+                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="">
+                                        <div><i class="fa-solid fa-circle-xmark"></i></div>
+                                   </div> -->
+                              </div>
+                              
+                         </div>
+                    </form>
+                    <div class="chapter_form__alert">
+                         <div style="display: none" class="chapter_form__warning">
+                              <i class="fa-solid fa-triangle-exclamation"></i>
+                              <span>Vui lòng nhập số</span>
+                         </div>
+                         <div style="display: none" class="chapter_form__success">
+                              <i class="fa-solid fa-circle-check"></i>
+                              <span>Đã tạo thành công</span>
+                         </div>
+                    </div>
+                    <div class="chapter_form__button">
+                         <button>Hủy</button>
+                         <button type="submit" form="chapter_popup__form-container">Tạo</button>
+                    </div>
+
+               </div>
+          </div>
+
+     </div>
+</body>
+
+<script src="/js/private/addChapter.js"></script>
+<script src="/js/shared/confirm.js"></script>
+<script src="/js/shared/search.js"></script>
+<script src="/js/shared/tool.js"></script>
+<script src="/js/shared/login.js"></script>
+</html>

@@ -32,6 +32,7 @@ app.use('/truyen', require('./routes/comic'));
 app.use('/filter', require('./routes/filter'));
 app.use('/login', require('./routes/login'));
 app.use('/addComic', require('./routes/addComic'));
+app.use('/addChapter', require('./routes/addChapter'));
 
 app.listen(PORT, () => {
      console.log(`Server is listening at ${PORT} ...`);

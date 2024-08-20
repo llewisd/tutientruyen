@@ -22,10 +22,10 @@
                               <i class="fa-solid fa-bars"></i>
                               <span>Danh mục truyện</span>
                          </div>
-                         <form class="body_header__search-block" id="body_header__search-form">
-                              <input type="text" name="comic" class="body_header__search-bar" placeholder="Tìm kiếm">
+                         <div class="body_header__search-block" id="body_header__search-form">
+                              <input type="text" name="comic" class="body_header__search-bar" placeholder="Tìm kiếm" autocomplete="off">
                               <button type="submit" form="body_header__search-form"><i class="fa-solid fa-magnifying-glass"></i></button> 
-                         </form>
+                         </div>
                     </div>
 
                     <div class="body_comic__list">
@@ -66,16 +66,15 @@
                                                        <i class="fa-solid fa-flag"></i>
                                                        <span>Báo lỗi : </span>
                                                        <span><%= item.bao_loi %></span>
-                                                       <button>reset</button>
                                                   </div>
                                                   <div class="body_comic__item-view">
                                                        <i class="fa-regular fa-eye"></i>
                                                        <span><%= item.tong_luot_xem %></span>
                                                   </div>
                                              </div>
-                                             <div class="body_comic__item-detail">
+                                             <a href="/addChapter/<%= item.link %>/<%= item._id %>" class="body_comic__item-detail">
                                                   <i class="fa-solid fa-arrow-right-long"></i>
-                                             </div>
+                                             </a>
                                         </div>
 
                                    </div>
@@ -179,8 +178,13 @@
 
      </div>
 </body>
+<!-- Lưu biến dữ liệu từ Express vào biến JavaScript -->
+ <script>
+     const dataFromServer = '<%- JSON.stringify(created_comic) %>';
+ </script>
 <script src="/js/shared/search.js"></script>
 <script src="/js/shared/tool.js"></script>
 <script src="/js/shared/login.js"></script>
+<script src="/js/shared/calculate.js"></script>
 <script src="/js/private/addComic.js"></script>
 </html>
