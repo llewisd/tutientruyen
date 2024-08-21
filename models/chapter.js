@@ -11,14 +11,25 @@ const chapter_Schema = mongoose.Schema({
           type: mongoose.Schema.Types.ObjectId,
           ref: 'Truyen'
      },
-     chuong: Number,
+     chuong: {
+          type:Number,
+     },
      cap_nhat: {
           type: Date,
           default: Date.now()
      },
-     luot_xem: Number,
-     so_binh_luan: Number,
-     bao_loi: Number,
+     luot_xem: {
+          type: Number,
+          default: 0
+     },
+     so_binh_luan: {
+          type: Number,
+          default: 0
+     },
+     bao_loi: {
+          type: Number,
+          default: 0
+     },
      anh: [anh_Schema]
 }, {collection: 'Chapter',  versionKey: false});
 

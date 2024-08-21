@@ -129,7 +129,7 @@ const createComicFolder = async (req, res) => {
 const createComic = async (req, res) => {
      try {
           const anh = req.query.url + req.file.filename;
-          await Truyen.findByIdAndUpdate(req.query.truyen_id, {anh: anh}, {new: true})
+          await Truyen.findByIdAndUpdate(req.query.truyen_id, {anh: anh, anh_root: req.query.url.replace('avatar/','')}, {new: true})
                .catch(err => console.log(`createComic - Line 76 (addComicController.js) : ${err}` ))
           res.json({ message: 'success!'});
      }
@@ -198,7 +198,7 @@ const updateComic = async (req, res) => {
                const getFilename = fs.readdirSync(path.join(__dirname, req.query.folderPath, req.query.folderName));
                var anh = req.query.url + getFilename;
           }
-          await Truyen.findByIdAndUpdate(req.query.truyen_id, {anh: anh}, {new: true})
+          await Truyen.findByIdAndUpdate(req.query.truyen_id, {anh: anh, anh_root: req.query.url.replace('avatar/','')}, {new: true})
                .catch(err => console.log(`createComic - Line 76 (addComicController.js) : ${err}` ))
           
           res.json({ message: 'success!'});

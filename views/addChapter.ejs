@@ -21,12 +21,12 @@
                     <div class="body_header">
                          <a href="/addComic"><i class="fa-solid fa-arrow-left-long"></i></a>
                     </div>
-                    <div class="body_name">
-                         <div><%= comic_name %></div>
+                    <div class="body_name" data-truyen-link="<%= comic_name.link %>" data-truyen-id="<%= comic_name._id %>">
+                         <div><%= comic_name.ten %></div>
                     </div>
                     <div class="body_list">
                          <% chapterInfo.forEach(item => { %>
-                              <div class="body_item">
+                              <div class="body_item" data-chapter-id="<%= item._id %>">
                                    <div class="body_item__head">
                                         <div class="body_item__chapter">
                                              Chương <%= item.chuong %>
@@ -83,14 +83,7 @@
                                    <div class="chapter_form__img-input-btn">Thêm ảnh</div>
                               </div>
                               <div class="chapter_form__img-list">
-                                   <!-- <div class="chapter_form__img-item">
-                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="">
-                                        <div><i class="fa-solid fa-circle-xmark"></i></div>
-                                   </div>
-                                   <div class="chapter_form__img-item">
-                                        <img src="../public/images/comic/nguyen_ton/avatar/avatar.jpg" alt="">
-                                        <div><i class="fa-solid fa-circle-xmark"></i></div>
-                                   </div> -->
+                                   
                               </div>
                               
                          </div>
@@ -99,6 +92,10 @@
                          <div style="display: none" class="chapter_form__warning">
                               <i class="fa-solid fa-triangle-exclamation"></i>
                               <span>Vui lòng nhập số</span>
+                         </div>
+                         <div style="display: none" class="chapter_form__warning">
+                              <i class="fa-solid fa-triangle-exclamation"></i>
+                              <span>Chapter đã tồn tại</span>
                          </div>
                          <div style="display: none" class="chapter_form__success">
                               <i class="fa-solid fa-circle-check"></i>

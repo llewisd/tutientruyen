@@ -44,7 +44,7 @@ const getChapter = async (req, res) => {
                          chuong: "$documents.chuong",
                          anh: "$documents.anh",
                          truyen_id: "$documents.truyen_id",
-                         tat_ca_chuong: "$tat_ca_chuong"
+                         tat_ca_chuong: "$tat_ca_chuong",
                     }
                },
                {
@@ -68,7 +68,8 @@ const getChapter = async (req, res) => {
                          anh: "$anh",
                          ten: "$truyen_id.ten",
                          link: "$truyen_id.link",
-                         tat_ca_chuong: "$tat_ca_chuong"
+                         tat_ca_chuong: "$tat_ca_chuong",
+                         anh_root: "$truyen_id.anh_root"
                     }
                },
                {
@@ -91,8 +92,8 @@ const getChapter = async (req, res) => {
                          chuong: "$documents.chuong",
                          anh: "$documents.anh",
                          ds_chuong: "$ds_chuong",
-                         tat_ca_chuong: "$documents.tat_ca_chuong"
-
+                         tat_ca_chuong: "$documents.tat_ca_chuong",
+                         anh_root: "$documents.anh_root"
                     }
                },
                {

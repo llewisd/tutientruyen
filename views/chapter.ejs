@@ -36,7 +36,7 @@
                <div class="body_content">
                     <% chapterInfo.anh.forEach(item => { %>
                          <div class="body_image">
-                              <img src="<%= item.path %>" alt="image <%= item.stt %>">
+                              <img src="<%= chapterInfo.anh_root %><%= item.path %>" alt="image <%= item.stt %>">
                          </div>
                     <% }) %>
                </div>

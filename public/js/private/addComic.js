@@ -1,24 +1,24 @@
-// Ẩn hiện nút reset
-document.addEventListener('DOMContentLoaded', () => {
-     const reset_button = document.querySelectorAll('.body_comic__item-third button');
+// // Ẩn hiện nút reset
+// document.addEventListener('DOMContentLoaded', () => {
+//      const reset_button = document.querySelectorAll('.body_comic__item-third button');
      
-     reset_button.forEach(item => {
-          item.addEventListener('click', function(e) {
-               const flag_value = e.target.closest('.body_comic__item-flag').querySelector('span:nth-of-type(2)');
-               flag_value.innerHTML = '0';
-               item.disabled = true;
-               item.style.opacity = 0.8; 
-               item.style.cursor = 'not-allowed'
-               // Nếu trường bao_loi bằng 0 thì set lại border xanh
-               const parent_border_item = e.target.closest('.body_comic__item');
-               parent_border_item.style.border = '3px solid var(--green-color)'; 
+//      reset_button.forEach(item => {
+//           item.addEventListener('click', function(e) {
+//                const flag_value = e.target.closest('.body_comic__item-flag').querySelector('span:nth-of-type(2)');
+//                flag_value.innerHTML = '0';
+//                item.disabled = true;
+//                item.style.opacity = 0.8; 
+//                item.style.cursor = 'not-allowed'
+//                // Nếu trường bao_loi bằng 0 thì set lại border xanh
+//                const parent_border_item = e.target.closest('.body_comic__item');
+//                parent_border_item.style.border = '3px solid var(--green-color)'; 
 
-               // Cập nhật dữ liệu cho bao_loi
-               // fetch('/addComic/updateError')
-               //      .catch(err => console.log(err));
-          });
-     });
-});
+//                // Cập nhật dữ liệu cho bao_loi
+//                // fetch('/addComic/updateError')
+//                //      .catch(err => console.log(err));
+//           });
+//      });
+// });
 
 // Xét border cho item
 function setBorderForItem() {
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Cập nhật truyện đã tạo
 function handleForUpdateComic() {
-     const change_comic_button = document.querySelectorAll('.body_comic__item-name div:nth-of-type(2)');
+     const change_comic_button = document.querySelectorAll('.body_comic__item-name div');
      change_comic_button.forEach(item => {
           item.addEventListener('click', async function(e) {
                const addComic_block = document.querySelector('.addComic_block');
@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
                          <div class="body_comic__item-content" data-truyen-id="${item._id}">
                               <div class="body_comic__item-first">
                                    <div class="body_comic__item-name">
-                                        <div>${item.ten}</div>
+                                        <a href="/addChapter/${item.link}/${item._id}">${item.ten}</a>
                                         <div><i class="fa-solid fa-pen"></i></div>
                                    </div>
                                    <div class="body_comic__item-first-support">
@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="body_comic__item-content" data-truyen-id="${item._id}">
                          <div class="body_comic__item-first">
                               <div class="body_comic__item-name">
-                                   <div>${item.ten}</div>
+                                   <a href="/addChapter/${item.link}/${item._id}">${item.ten}</a>
                                    <div><i class="fa-solid fa-pen"></i></div>
                               </div>
                               <div class="body_comic__item-first-support">

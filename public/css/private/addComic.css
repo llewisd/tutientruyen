@@ -102,7 +102,7 @@
      column-gap: 14px;
 }
 
-.body_comic__item-name div:nth-child(1) {
+.body_comic__item-name a {
      font-size: var(--font-size-22);
      font-weight: var(--font-weight-bold);
      max-width: 300px;
@@ -111,11 +111,15 @@
      white-space: nowrap;
 }
 
-.body_comic__item-name div:nth-child(2) {
+.body_comic__item-name a:hover {
+     text-decoration: underline;
+}
+
+.body_comic__item-name div {
      padding: 5px;
 }
 
-.body_comic__item-name div:nth-child(2):hover {
+.body_comic__item-name div:hover {
      cursor: pointer;
 }
 

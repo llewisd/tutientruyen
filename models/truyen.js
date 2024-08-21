@@ -32,6 +32,7 @@ const truyen_Schema = mongoose.Schema({
           unique: true
      },
      anh: String,
+     anh_root: String,
      tac_gia: {
           type: String,
           default: "Đang cập nhật"
