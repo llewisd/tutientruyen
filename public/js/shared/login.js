@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
      const signup_form = document.getElementById('sign_window__signup-form');
      const signin_form = document.getElementById('sign_window__signin-form');
      const alert_signin_div = document.querySelectorAll('.sign_window__block-signin .sign_window__alert div');
-     const alert_signup_div = document.querySelectorAll('.sign_updow__block-signup .sign_window__alert div');
-
+     const alert_signup_div = document.querySelectorAll('.sign_window__block-signup .sign_window__alert div');
+     
      exit_btn.addEventListener('click', e => {
           sign_window.style.display = "none";
           signup_form.reset();
@@ -137,7 +137,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
      // Kiểm tra tên miền email khi đăng ký có đúng định dạng và thực sự tồn tại không
      const email_input = signup_form.querySelector('#signup_email');
+     const name_input = signup_form.querySelector('#signup_name');
      const signup_btn = document.querySelector('.sign_window__block-signup .sign_window__support button:nth-child(2)');
+
+     name_input.addEventListener('input', function(e) {
+          alert_div[1].style.display = "none";
+     });
+
+     email_input.addEventListener('input', function(e) {
+          alert_div[0].style.display = "none";
+          alert_div[3].style.display = "none";
+     });
 
      email_input.addEventListener('blur', function(e) {
           if(email_input.value.trim() !== '') {

@@ -16,4 +16,6 @@ router.get('/:link/chapter-:chapter/comment/delete', secureMiddleware.stringEsca
 
 router.get('/:link/chapter-:chapter/comment', chapterController.loadComment);
 
+router.get('/:link/chapter-:chapter/reportError', chapterController.reportError);
+
 module.exports = router;

@@ -175,6 +175,20 @@ const deleteChapter = async (req, res) => {
      }
 }
 
+// report Error
+const reportError = async (req, res) => {
+     try {
+          const chapter_id = req.query.chapter_id;
+          await Chapter.findByIdAndUpdate(chapter_id, {bao_loi: 0})
+          .catch(err => console.log(`reportError - Line 183 (addChapterController.js) : ${err}`));
+          res.json({success: true});
+     }
+     catch(err) {
+          console.log(`reportError - Line 187 (addChapterController.js) : ${err}`);
+          res.json({success: false});
+     }
+}
+
 module.exports = {createChapter, deleteChapter, getAddChapterPage, createChapterFolder,
-     getChapterForUpdate, updateChapterDoc, updateChapterImage
+     getChapterForUpdate, updateChapterDoc, updateChapterImage, reportError
 };

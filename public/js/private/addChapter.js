@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
                item.style.pointerEvents = 'none';
           }
           else {
-               item.addEventListener('click', function(e) {
+               item.addEventListener('click', async function(e) {
                     const flag_value = e.target.closest('.body_item__error').querySelector('div span:nth-of-type(2)');
                     flag_value.innerHTML = '0';
                     item.disabled = true;
@@ -21,8 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     parent_border_item.style.border = '1px solid var(--opacity-white-color)'; 
 
                     // Cập nhật dữ liệu cho bao_loi
-                    // fetch('/addComic/updateError')
-                    //      .catch(err => console.log(err));
+                    const body_name_block = document.querySelector('.body_name');
+                    const truyen_link = body_name_block.getAttribute('data-truyen-link');
+                    const truyen_id = body_name_block.getAttribute('data-truyen-id');
+                    const chapter_id = e.target.closest('.body_item').getAttribute('data-chapter-id');
+                    await fetch(`/addChapter/${truyen_link}/${truyen_id}/reportError?chapter_id=${chapter_id}`)
+                         .catch(err => console.log(err));
                });
           }
      });

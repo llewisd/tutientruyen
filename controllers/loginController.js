@@ -2,6 +2,28 @@ const Taikhoan = require('../models/taikhoan');
 const emailExists = require('email-exists');
 const global = require('../global');
 const nodemailer = require('nodemailer');
+const crypto = require('crypto');
+
+// Khóa và IV
+const algorithm = 'aes-256-cbc';
+const key = Buffer.from('this-is-my-secret-key-in-my-app-', 'utf8'); // Khóa 32 byte
+const iv = Buffer.from('my-fixed-iv-2340', 'utf8'); // IV 16 byte, cần đúng độ dài
+
+// Hàm mã hóa
+function encrypt(text) {
+    const cipher = crypto.createCipheriv(algorithm, key, iv);
+    let encrypted = cipher.update(text, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    return encrypted;
+}
+
+// Hàm giải mã
+function decrypt(encrypted) {
+    const decipher = crypto.createDecipheriv(algorithm, key, iv);
+    let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+    return decrypted;
+}
 
 const signUpAccount = async (req, res) => {
      const {email, password, name} = req.body;
@@ -18,7 +40,7 @@ const signUpAccount = async (req, res) => {
           const newTaikhoan = new Taikhoan({
                ten: name,
                email: email,
-               mat_khau: password
+               mat_khau: encrypt(password)
           });
           await newTaikhoan.save();
      }
@@ -30,7 +52,7 @@ const checkEmailExist = async (req, res) => {
      const {email} = req.body;
      // Validate the email
      try {
-          const result = await emailExists({ sender: 'abcxyz123321@gmail.com', recipient: email, timeout: 5000 });
+          const result = await emailExists({ sender: 'abcxyz123321@gmail.com', recipient: email, timeout: 6000 });
           if(result === "MAY_EXIST") res.json({status: "ok"});
           else res.json({status: "not ok"});
      }
@@ -51,7 +73,8 @@ const signInAccount = async (req, res) => {
      };
      if(!getAccount.length) check.email = "not ok";
      else {
-          if(getAccount[0].mat_khau !== password) check.password = "not ok";
+          const isPassword = decrypt(getAccount[0].mat_khau);
+          if(isPassword !== password) check.password = "not ok";
      }
      if(check.email === "ok" && check.password === "ok") {
           res.cookie('user_id', getAccount[0]._id, {maxAge: 7 * 24 * 60 * 60 * 1000, httpOnly: true});
@@ -83,7 +106,7 @@ const sendPasswordToEmail = async (req, res) => {
                from: myemail, 
                to: email,
                subject: "Lấy lại mật khẩu",
-               text: `Mật khẩu của bạn là : ${getTaikhoan[0].mat_khau}`
+               text: `Mật khẩu của bạn là : ${decrypt(getTaikhoan[0].mat_khau)}`
           };
           transporter.sendMail(mailOptions, (error, info) => {
                if (error) {

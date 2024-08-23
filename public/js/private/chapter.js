@@ -394,6 +394,28 @@ function getTimeSinceLastUpdate(lastUpdateTimestamp) {
      }
 }
 
-// Hàm tính lượt xem : cứ mỗi lần click vào 1 chương thì luot_xem += 1
+// Báo lỗi
+document.addEventListener('DOMContentLoaded', () => {
+     const body_info__flag = document.querySelector('.body_info__flag');
+     let isClicked = false;
+     const chapterId = body_info__flag.getAttribute('data-chapter-id');
+     
+     body_info__flag.addEventListener('click', async function(e) {
+          // Báo lỗi
+          if(!isClicked) {
+               isClicked = true;
+               body_info__flag.style.color = 'var(--red-color)';
+               // Update trường bao_loi Chapter
+               const requestToUpdate = await fetch(`${window.location.pathname}/reportError?chapter_id=${chapterId}&increase=ok`)
+          }
+          // Hủy báo lỗi
+          else {
+               isClicked = false;
+               body_info__flag.style.color = 'var(--opacity-white-color)';
+               // Update trường bao_loi Chapter
+               const requestToUpdate = await fetch(`${window.location.pathname}/reportError?chapter_id=${chapterId}&increase=nok`)
+          }
+     });
+});
 
 

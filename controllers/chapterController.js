@@ -64,6 +64,7 @@ const getChapter = async (req, res) => {
                },
                {
                     $project: {
+                         chapter_id: "$chapter_id",
                          chuong: "$chuong",
                          anh: "$anh",
                          ten: "$truyen_id.ten",
@@ -89,6 +90,7 @@ const getChapter = async (req, res) => {
                     $project: {
                          ten: "$documents.ten",
                          link: "$_id",
+                         chapter_id: "$documents.chapter_id",
                          chuong: "$documents.chuong",
                          anh: "$documents.anh",
                          ds_chuong: "$ds_chuong",
@@ -456,4 +458,25 @@ const loadComment = async (req, res) => {
      }
 }
 
-module.exports = {getChapter, createComment, deleteComment, loadComment};
+const reportError = async (req, res) => {
+     try {
+          const chapter_id = req.query.chapter_id;
+          const increase = req.query.increase;
+          if(increase === 'ok') {
+               await Chapter.findByIdAndUpdate(chapter_id, { $inc: { bao_loi: 1 } }) 
+               .catch(err => console.log(`reportError - Line 465 (chapterController.js) : ${err}`));
+          }
+          else {
+               await Chapter.findByIdAndUpdate(chapter_id, { $inc: { bao_loi: -1 } }) 
+               .catch(err => console.log(`reportError - Line 469 (chapterController.js) : ${err}`));
+          }
+          res.json({success: true});
+     }
+     catch(err) {
+          console.log(`reportError - Line 474 (chapterController.js) : ${err}`);
+          res.json({success: false});
+     }
+     
+}
+
+module.exports = {getChapter, createComment, deleteComment, loadComment, reportError};

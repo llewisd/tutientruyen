@@ -44,4 +44,6 @@ router.post('/:truyen_link/:truyen_id/update/image', upload.array('images[]') , 
 // Delete chapter
 router.get('/:truyen_link/:truyen_id/delete/:chapter_id', addChapterController.deleteChapter);
 
+// reportError
+router.get('/:truyen_link/:truyen_id/reportError', addChapterController.reportError);
 module.exports = router;

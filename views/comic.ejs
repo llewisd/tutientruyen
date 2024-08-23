@@ -48,7 +48,7 @@
                                    <td>Thể loại : </td>
                                    <td>
                                         <% comicInfo.the_loai.forEach(item => { %>
-                                             <a href=""><%= item %></a>
+                                             <a href="/filter?status=all&arrange=date&trans=all&genre=<%= item %>&page=1"><%= item %></a>
                                         <% }) %>
                                    </td>
                               </tr>

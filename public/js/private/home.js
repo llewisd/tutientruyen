@@ -8,26 +8,6 @@ function changeSlideItem(slider, slider_items) {
         slider.appendChild(slider_items[0]);
         slider_items = slider.getElementsByClassName('slider_block__item');
     }, 4000);
-    //  let index = 0;
-     
-    //  setInterval(() => {
-    //     //   index = (index + 1) % slider_items.length;
-    //     //   const offset = -index * 200;
-    //       for(i=0; i < slider_items.length; i++) {
-    //         slider_items[i].style.transform = 'translateX(-200px)'; 
-    //       }
-    //     //   for(i=0; i < slider_items.length; i++) {
-    //     //     slider_items[i].style.transform = 'none';
-            
-    //     //   }
-        
-    //     //  Di chuyển phần tử đầu tiên đến cuối
-    //      slider.appendChild(slider_items[0]);
-    
-    //     //  Cập nhật danh sách phần tử sau khi di chuyển
-    //      slider_items = slider.getElementsByClassName('slider_block__item');
-
-    //  }, 4000);
 }
 
 function clickToChangeRightSlideItem(slider, slider_items) {
@@ -59,18 +39,6 @@ function clickToChangeLeftSlideItem(slider, slider_items) {
      });
  });
 
-// Biến đổi thời điểm cập nhật cho đúng định dạng
-// document.addEventListener('DOMContentLoaded', function() {
-//     const slider_item = document.querySelectorAll('.slider_block__info span');
-//     const body_list_item = document.querySelectorAll('.body_list__info span');
-//     slider_item.forEach(item => {
-//          item.innerHTML = getTimeSinceLastUpdate(item.innerHTML);
-
-//     })
-//     body_list_item.forEach(item => {
-//          item.innerHTML = getTimeSinceLastUpdate(item.innerHTML);
-//     })
-// })
 
 // Biến đổi view cho đúng định dạng
 document.addEventListener('DOMContentLoaded', function() {
