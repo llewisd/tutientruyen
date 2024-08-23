@@ -41,6 +41,7 @@ router.post('/:truyen_link/:truyen_id/update/doc', secureMiddleware.stringEscape
 
 router.post('/:truyen_link/:truyen_id/update/image', upload.array('images[]') , resetFileCount , addChapterController.updateChapterImage);
 
-router.post('/:truyen_link/:truyen_id/delete', addChapterController.deleteChapter);
+// Delete chapter
+router.get('/:truyen_link/:truyen_id/delete/:chapter_id', addChapterController.deleteChapter);
 
 module.exports = router;

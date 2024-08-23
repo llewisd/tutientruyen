@@ -66,6 +66,20 @@ truyen_Schema.pre('validate', function(next) {
      next();
 })
 
+truyen_Schema.pre('findOneAndDelete', async function(next) {
+     const Chapter = mongoose.model('Chapter');
+     // Tìm tất cả các bình luận liên quan đến Chapter này
+     const truyenId = this.getQuery()._id; // Lấy ID từ điều kiện truy vấn
+
+     // Lọc tất cả chapter có liên quan
+     const all_chapter = await Chapter.find({truyen: truyenId});
+
+     // Lặp và xóa từng chapter
+     for(const chapter of all_chapter) {
+          await Chapter.findOneAndDelete({_id: chapter._id});
+     }
+});
+
 
 const Truyen = mongoose.model('Truyen', truyen_Schema);
 

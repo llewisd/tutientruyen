@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Chapter = require('../models/chapter');
 
 const binhluan_Schema = mongoose.Schema({
      tai_khoan: {
@@ -33,7 +32,9 @@ const binhluan_Schema = mongoose.Schema({
 
 // Middleware pre hook để xóa tất cả các comment con
 binhluan_Schema.pre('findOneAndDelete', async function(next) {
+     const Chapter = mongoose.model('Chapter');
      const docToDelete = await this.model.findOne(this.getFilter());
+     
      // Trước khi xóa cập nhật lại so_binh_luan
      const chapterId = docToDelete.chapter;
      if (chapterId) {
@@ -48,7 +49,6 @@ binhluan_Schema.pre('findOneAndDelete', async function(next) {
      next();
  });
 
-
 binhluan_Schema.pre('deleteMany', async function (next) {
      const query = this.getQuery();
      this.chaptersAffected = await Binhluan.aggregate([
@@ -57,9 +57,11 @@ binhluan_Schema.pre('deleteMany', async function (next) {
      ]);
      next();
 });
+
    
-   // Hook post để cập nhật so_binh_luan sau khi xóa
+// Hook post để cập nhật so_binh_luan sau khi xóa
 binhluan_Schema.post('deleteMany', async function () {
+     const Chapter = mongoose.model('Chapter');
      if (this.chaptersAffected) {
        for (const chapter of this.chaptersAffected) {
          await Chapter.findByIdAndUpdate(chapter._id, {

@@ -8,6 +8,7 @@
      <link rel="stylesheet" href="/css/shared/header.css">
      <link rel="stylesheet" href="/css/shared/tool.css">
      <link rel="stylesheet" href="/css/shared/login.css">
+     <link rel="stylesheet" href="/css/shared/confirm.css">
      <link rel="stylesheet" href="/css/private/addComic.css">
      <title>Welcome to tutientruyen</title>
 </head>
@@ -176,6 +177,9 @@
                </div>
            </div>
 
+          <!-- Xóa truyện -->
+           <%- include('partials/confirm') %>
+
      </div>
 </body>
 <!-- Lưu biến dữ liệu từ Express vào biến JavaScript -->
@@ -183,7 +187,6 @@
      const dataFromServer = '<%- JSON.stringify(created_comic) %>';
  </script>
 <script src="/js/shared/search.js"></script>
-<script src="/js/shared/tool.js"></script>
 <script src="/js/shared/login.js"></script>
 <script src="/js/shared/calculate.js"></script>
 <script src="/js/private/addComic.js"></script>

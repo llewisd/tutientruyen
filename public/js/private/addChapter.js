@@ -560,7 +560,7 @@ function handleForUpdate() {
 
                          const chapter = chapter_form.querySelector('#chapter_form__input-chuong');
                          const dataInform = {};
-                         dataInform.chapter = chapter.value;
+                         dataInform.chapter = chapter.value.trim();
                          
                          try {
                               const response = await fetch(`/addChapter/${truyen_link}/${truyen_id}/update/doc?chapter_id=${chapter_id}&truyen_name=${truyen_name}&old_chapter=${old_chapter}`, {
@@ -612,8 +612,61 @@ function handleForUpdate() {
     
 }
 
+// Xóa item
+function deleteItem() {
+     // Khi nhấn vào thùng rác thì mở xóa
+     const delete_confirm__block = document.querySelector('.delete_confirm__block');
+     const trash_icon = document.querySelectorAll('.body_item__icon div:nth-of-type(2)');
+     const delete_btn = delete_confirm__block.querySelector('.delete_confirm__select button:nth-of-type(2)');
+     
+     trash_icon.forEach(item => {
+          item.addEventListener('click', function(e) {
+               delete_confirm__block.style.display = "block";
+               // Khi nhấn vào "Hủy" tắt bảng xác nhận xóa
+               const cancel_btn = delete_confirm__block.querySelector('.delete_confirm__select button:nth-child(1)');
+               cancel_btn.addEventListener('click', function(e) {
+                    delete_confirm__block.style.display = "none";
+                    // Gỡ các sự kiện ra
+                    delete_btn.removeEventListener('click', removeChapter);
+               });
+               // Khi nhấn nút "Xóa" thì xóa chapter
+               delete_btn.addEventListener('click', removeChapter);
+               const truyen_link = document.querySelector('.body_name').getAttribute('data-truyen-link');
+               const truyen_id = document.querySelector('.body_name').getAttribute('data-truyen-id');
+               const truyen_name = document.querySelector('.body_name div').textContent;
+               const chapter_id = item.closest('.body_item').getAttribute('data-chapter-id');
+               const chapter = item.closest('.body_item__head').querySelector('.body_item__chapter').textContent.trim().replace('Chương ','');
+               async function removeChapter(e) {
+                    try {
+                         const requestToRemove = await fetch(`/addChapter/${truyen_link}/${truyen_id}/delete/${chapter_id}?truyen_name=${truyen_name}&chapter=${chapter}`);
+                         const responseData = await requestToRemove.json();
+                         
+                         if(responseData.success) {
+                              // console.log(window.location.href)
+                              window.location.href = window.location.href;
+                         }
+                    }
+                    catch(err) {
+                         console.log(`addChapter.js - Line 646 : ${err}`);
+                    }
+               }
+          });
+     });
+}
+
+// Khi bấm vào tên chương thì chuyển sang trang chapter
+document.addEventListener('DOMContentLoaded', () => {
+     const chapter_name = document.querySelectorAll('.body_item__chapter');
+     chapter_name.forEach(item => {
+          item.addEventListener('click', function(e) {
+               e.target.querySelector('a').click();
+          });
+     })
+});
+
 document.addEventListener('DOMContentLoaded', () => {
      setBorderForChapterItem();
      handleForCreate();
      handleForUpdate();
+     deleteItem();
 })

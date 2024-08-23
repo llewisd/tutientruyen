@@ -63,6 +63,11 @@
      color: var(--green-color);
 }
 
+.body_item__chapter:hover {
+     cursor: pointer;
+     text-decoration: underline;
+}
+
 .body_item__icon {
      display: flex;
      align-items: center;

@@ -26,7 +26,7 @@ router.post('/create/folder' ,addComicController.createComicFolder);
 
 router.post('/create', upload.single('image') ,addComicController.createComic);
 
-router.post('/delete', addComicController.deleteComic);
+router.get('/delete', addComicController.deleteComic);
 
 router.get('/update/getComic', addComicController.getComicforUpdate);
 

@@ -138,10 +138,24 @@ const createComic = async (req, res) => {
      }
 };
 
-const deleteComic = (req, res) => {
-
-
-     
+const deleteComic = async (req, res) => {
+     try {
+          const truyen_id = req.query.truyen_id;
+          const truyen_name = req.query.truyen_name;
+          const folder_name = stringToSlugWithUnderscore(truyen_name);
+          // Cập nhật dữ liệu
+          await Truyen.findOneAndDelete({_id: truyen_id});
+          // Xóa thư mục
+          const folderPath = path.join(__dirname, `../public/images/comic/${folder_name}`);
+          fs.rm(folderPath, { recursive: true, force: true }, (err) => {
+               if(err) console.log(`deleteComic - Line 150 (addComicController.js): ${err}`);
+          });
+          res.json({success : true});
+     }
+     catch(err) {
+          console.log(`deleteComic - Line 146 (addComicController.js) : ${err}`);
+          res.json({success : false})
+     }
 };
 
 // Update

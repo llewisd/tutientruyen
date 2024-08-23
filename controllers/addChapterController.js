@@ -27,7 +27,7 @@ const getAddChapterPage = async (req, res) => {
           comic_name = comic_name[0];
 
           const chapterInfo = await Chapter.find({truyen: truyen_id}).sort({chuong: -1, cap_nhat: -1});
-
+          
           res.render('addChapter', {userInfo, all_genre, comic_name, chapterInfo, changeTimetoDDMMYYYY});
      }
      catch(err) {
@@ -150,8 +150,29 @@ const updateChapterImage = async (req, res) => {
 }
 
 // Delete chapter
-const deleteChapter = (req, res) => {
-     
+const deleteChapter = async (req, res) => {
+     try {
+          const truyen_link = req.params.truyen_link.trim();
+          const truyen_id = req.params.truyen_id.trim();
+          const chapter_id = req.params.chapter_id.trim();
+          const truyen_name = req.query.truyen_name.trim();
+          const chapter = parseFloat(req.query.chapter.trim());
+
+          // Xóa dữ liệu chapter trong cơ sở dữ liệu
+          await Chapter.findOneAndDelete({_id: chapter_id});
+
+          // Xóa thư mục
+          const folder_name = stringToSlugWithUnderscore(truyen_name);
+          const folderPath = path.join(__dirname, `../public/images/comic/${folder_name}/`, `chapter${chapter}`);
+          fs.rm(folderPath, { recursive: true, force: true }, (err) => {
+               if(err) console.log(`deleteChapter - Line 165 (addChapterController.js): ${err}`);
+          });
+          res.json({success: true});
+     }
+     catch(err) {
+          console.log(`deleteChapter - Line 175 (addChapterController.js): ${err}`);
+          res.json({success: false});
+     }
 }
 
 module.exports = {createChapter, deleteChapter, getAddChapterPage, createChapterFolder,

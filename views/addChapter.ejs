@@ -30,6 +30,7 @@
                                    <div class="body_item__head">
                                         <div class="body_item__chapter">
                                              Chương <%= item.chuong %>
+                                             <a href="/truyen/<%= comic_name.link %>/chapter-<%= item.chuong %>" id="hiddenLink" style="display: none;"></a>
                                         </div>     
                                         <div class="body_item__icon">
                                              <div><i class="fa-solid fa-pen"></i></div>
@@ -110,12 +111,14 @@
                </div>
           </div>
 
+          <!-- Popup xóa -->
+          <%- include('partials/confirm') %>
      </div>
 </body>
 
 <script src="/js/private/addChapter.js"></script>
-<script src="/js/shared/confirm.js"></script>
+<!-- <script src="/js/shared/confirm.js"></script> -->
 <script src="/js/shared/search.js"></script>
-<script src="/js/shared/tool.js"></script>
+<!-- <script src="/js/shared/tool.js"></script> -->
 <script src="/js/shared/login.js"></script>
 </html>

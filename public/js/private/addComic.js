@@ -30,6 +30,52 @@ function setBorderForItem() {
      });
 };
 
+// Xóa comic
+function deleteComic() {
+     // Nhấn để mở popup xóa
+     const body_comic__list = document.querySelector('.body_comic__list');
+     const trash_icon = body_comic__list.querySelectorAll('.body_comic__item-delete');
+     trash_icon.forEach(item => {
+          item.addEventListener('click', handleForDeleteComic);
+          function handleForDeleteComic() {
+               // Hiện popup xóa
+               const delete_confirm__block = document.querySelector('.delete_confirm__block');
+               delete_confirm__block.style.display = "block";
+               // Khi bấm nút "Hủy" thì tắt popup và xóa event
+               const cancel_button = document.querySelector('.delete_confirm__select button:nth-of-type(1)');
+               const delete_button = delete_confirm__block.querySelector('.delete_confirm__select button:nth-of-type(2)');
+               cancel_button.addEventListener('click', function(e) {
+                    delete_confirm__block.style.display = "none";
+                    // Gỡ sự kiện ra
+                    delete_button.removeEventListener('click', deleteComicWithComicId);
+               });
+               // Sự kiện nhấn nút vào "Xóa"
+               delete_button.addEventListener('click', deleteComicWithComicId);
+               async function deleteComicWithComicId() {
+                    try {
+                         const truyen_id = item.closest('.body_comic__item-content').getAttribute('data-truyen-id');
+                         const truyen_name = item.closest('.body_comic__item-content').querySelector('.body_comic__item-name a').textContent.trim();
+                         
+                         const requestToDelete = await fetch(`/addComic/delete?truyen_id=${truyen_id}&truyen_name=${truyen_name}`);
+                         const result = await requestToDelete.json();
+                         console.log(result);
+                         if(result.success) {
+                              setTimeout(() => {
+                                   window.location.href = window.location.href;
+                              }, 1000);
+                         }
+                         else console.log(`deleteComic - Line 64 (addComic.js) : Fail to delete comic`);
+                    }
+                    catch(err) {
+                         console.log(`deleteComic - Line 64 (addComic.js) : ${err}`);
+                    }
+          
+               }
+          }
+
+     });
+}
+
 // Tạo hoặc Hủy truyện
 document.addEventListener('DOMContentLoaded', () => {
      const addComic_button = document.querySelector('.add_btn__footer');
@@ -446,6 +492,8 @@ document.addEventListener('DOMContentLoaded', () => {
      setBorderForItem()
      // Cập nhật truyện đã tạo
      handleForUpdateComic();
+     // Xóa comic
+     deleteComic();
 })
 
 // Chức năng tìm kiếm
@@ -512,6 +560,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           setBorderForItem()
           handleForUpdateComic();
+          deleteComic();
      });
      function search(query, data) {
           const results = data.filter(item => item.ten.toLowerCase().includes(query.toLowerCase()));
@@ -568,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                </div>
           `).join('');
-      }
+      };
 });
 
 
