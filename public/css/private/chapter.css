@@ -219,6 +219,9 @@
 .comment_list__content-body {
      padding: 8px 0;
      margin: 10px 0;
+     max-height: 100px;
+     overflow-y: auto;
+     scrollbar-width: thin;
 }
 
 .comment_list__content-foot {

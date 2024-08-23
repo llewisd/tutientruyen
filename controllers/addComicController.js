@@ -21,67 +21,190 @@ const getAddComicPage = async (req, res) => {
           if(!userInfo || (userInfo && userInfo.quyen === 'user')) return res.send("You don't have permission to access on this page. Please return to <a href='/'>homepage</a>");
 
           // Truy vấn dữ liệu truyện tranh đã tạo
-          const created_comic = await Truyen.aggregate([
-               {
-                    $lookup : {
-                         from: 'Chapter',
-                         localField: '_id',
-                         foreignField: 'truyen',
-                         as: "chapter_id"
-                    }
-               },
-               {
-                    $unwind: {path: "$chapter_id",preserveNullAndEmptyArrays: true} 
-               },
-               {
+          // const created_comic = await Truyen.aggregate([
+          //      {
+          //           $lookup : {
+          //                from: 'Chapter',
+          //                localField: '_id',
+          //                foreignField: 'truyen',
+          //                as: "chapter_id"
+          //           }
+          //      },
+          //      {
+          //           $unwind: {path: "$chapter_id",preserveNullAndEmptyArrays: true} 
+          //      },
+          //      {
                     
-                    $match: {'user_upload': userInfo._id}
-               },
-               {
-                    $project: {
-                         truyen: "$chapter_id.truyen",
-                         chuong: "$chapter_id.chuong",
-                         cap_nhat: "$chapter_id.cap_nhat",
-                         luot_xem: "$chapter_id.luot_xem",
-                         so_binh_luan: "$chapter_id.so_binh_luan",
-                         bao_loi: "$chapter_id.bao_loi",
-                         ten: 1,
-                         link: 1,
-                         anh: 1,
-                         tac_gia: 1,
-                         trang_thai: 1,
-                         tong_luot_xem: 1,
-                         user_upload: 1
+          //           $match: {'user_upload': userInfo._id}
+          //      },
+          //      {
+          //           $project: {
+          //                truyen: "$chapter_id.truyen",
+          //                chuong: "$chapter_id.chuong",
+          //                cap_nhat: "$chapter_id.cap_nhat",
+          //                luot_xem: "$chapter_id.luot_xem",
+          //                so_binh_luan: "$chapter_id.so_binh_luan",
+          //                bao_loi: "$chapter_id.bao_loi",
+          //                ten: 1,
+          //                link: 1,
+          //                anh: 1,
+          //                tac_gia: 1,
+          //                trang_thai: 1,
+          //                tong_luot_xem: 1,
+          //                user_upload: 1
+          //           }
+          //      },
+          //      {
+          //           $sort: {chuong: -1, cap_nhat: -1}
+          //      },
+          //      {
+          //           $group: {
+          //                _id: "$_id",
+          //                chuong: {$first: "$chuong"},
+          //                cap_nhat: {$first: "$cap_nhat"},
+          //                so_binh_luan: {$first: "$so_binh_luan"},
+          //                bao_loi: {$sum: "$bao_loi"},
+          //                ten: {$first: "$ten"},
+          //                link: {$first: "$link"},
+          //                anh: {$first: "$anh"},
+          //                tac_gia: {$first: "$tac_gia"},
+          //                trang_thai: {$first: "$trang_thai"},
+          //                tong_luot_xem: {$first: "$tong_luot_xem"},
+          //                user_upload: {$first: "$user_upload"},
+          //           }
+          //      },
+          //      {
+          //           $addFields: {
+          //             hasCapNhat: { $cond: { if: { $eq: ["$cap_nhat", null] }, then: 0, else: 1 } }
+          //           }
+          //      },
+          //      {
+          //           $sort: {hasCapNhat: 1, cap_nhat: -1}
+          //      }
+          // ]);
+          if(userInfo.quyen !== 'admin') {
+               var created_comic = await Truyen.aggregate([
+                    {
+                         $lookup : {
+                              from: 'Chapter',
+                              localField: '_id',
+                              foreignField: 'truyen',
+                              as: "chapter_id"
+                         }
+                    },
+                    {
+                         $unwind: {path: "$chapter_id",preserveNullAndEmptyArrays: true} 
+                    },
+                    {
+                         
+                         $match: {'user_upload': userInfo._id}
+                    },
+                    {
+                         $project: {
+                              truyen: "$chapter_id.truyen",
+                              chuong: "$chapter_id.chuong",
+                              cap_nhat: "$chapter_id.cap_nhat",
+                              luot_xem: "$chapter_id.luot_xem",
+                              so_binh_luan: "$chapter_id.so_binh_luan",
+                              bao_loi: "$chapter_id.bao_loi",
+                              ten: 1,
+                              link: 1,
+                              anh: 1,
+                              tac_gia: 1,
+                              trang_thai: 1,
+                              tong_luot_xem: 1,
+                              user_upload: 1
+                         }
+                    },
+                    {
+                         $sort: {chuong: -1, cap_nhat: -1}
+                    },
+                    {
+                         $group: {
+                              _id: "$_id",
+                              chuong: {$first: "$chuong"},
+                              cap_nhat: {$first: "$cap_nhat"},
+                              so_binh_luan: {$first: "$so_binh_luan"},
+                              bao_loi: {$sum: "$bao_loi"},
+                              ten: {$first: "$ten"},
+                              link: {$first: "$link"},
+                              anh: {$first: "$anh"},
+                              tac_gia: {$first: "$tac_gia"},
+                              trang_thai: {$first: "$trang_thai"},
+                              tong_luot_xem: {$first: "$tong_luot_xem"},
+                              user_upload: {$first: "$user_upload"},
+                         }
+                    },
+                    {
+                         $addFields: {
+                           hasCapNhat: { $cond: { if: { $eq: ["$cap_nhat", null] }, then: 0, else: 1 } }
+                         }
+                    },
+                    {
+                         $sort: {hasCapNhat: 1, cap_nhat: -1}
                     }
-               },
-               {
-                    $sort: {chuong: -1, cap_nhat: -1}
-               },
-               {
-                    $group: {
-                         _id: "$_id",
-                         chuong: {$first: "$chuong"},
-                         cap_nhat: {$first: "$cap_nhat"},
-                         so_binh_luan: {$first: "$so_binh_luan"},
-                         bao_loi: {$sum: "$bao_loi"},
-                         ten: {$first: "$ten"},
-                         link: {$first: "$link"},
-                         anh: {$first: "$anh"},
-                         tac_gia: {$first: "$tac_gia"},
-                         trang_thai: {$first: "$trang_thai"},
-                         tong_luot_xem: {$first: "$tong_luot_xem"},
-                         user_upload: {$first: "$user_upload"},
+               ]);
+          }
+          else {
+               var created_comic = await Truyen.aggregate([
+                    {
+                         $lookup : {
+                              from: 'Chapter',
+                              localField: '_id',
+                              foreignField: 'truyen',
+                              as: "chapter_id"
+                         }
+                    },
+                    {
+                         $unwind: {path: "$chapter_id",preserveNullAndEmptyArrays: true} 
+                    },
+                    {
+                         $project: {
+                              truyen: "$chapter_id.truyen",
+                              chuong: "$chapter_id.chuong",
+                              cap_nhat: "$chapter_id.cap_nhat",
+                              luot_xem: "$chapter_id.luot_xem",
+                              so_binh_luan: "$chapter_id.so_binh_luan",
+                              bao_loi: "$chapter_id.bao_loi",
+                              ten: 1,
+                              link: 1,
+                              anh: 1,
+                              tac_gia: 1,
+                              trang_thai: 1,
+                              tong_luot_xem: 1,
+                              user_upload: 1
+                         }
+                    },
+                    {
+                         $sort: {chuong: -1, cap_nhat: -1}
+                    },
+                    {
+                         $group: {
+                              _id: "$_id",
+                              chuong: {$first: "$chuong"},
+                              cap_nhat: {$first: "$cap_nhat"},
+                              so_binh_luan: {$first: "$so_binh_luan"},
+                              bao_loi: {$sum: "$bao_loi"},
+                              ten: {$first: "$ten"},
+                              link: {$first: "$link"},
+                              anh: {$first: "$anh"},
+                              tac_gia: {$first: "$tac_gia"},
+                              trang_thai: {$first: "$trang_thai"},
+                              tong_luot_xem: {$first: "$tong_luot_xem"},
+                              user_upload: {$first: "$user_upload"},
+                         }
+                    },
+                    {
+                         $addFields: {
+                           hasCapNhat: { $cond: { if: { $eq: ["$cap_nhat", null] }, then: 0, else: 1 } }
+                         }
+                    },
+                    {
+                         $sort: {hasCapNhat: 1, cap_nhat: -1}
                     }
-               },
-               {
-                    $addFields: {
-                      hasCapNhat: { $cond: { if: { $eq: ["$cap_nhat", null] }, then: 0, else: 1 } }
-                    }
-               },
-               {
-                    $sort: {hasCapNhat: 1, cap_nhat: -1}
-               }
-          ]);
+               ]);
+          }
+          
           res.render('addComic', {userInfo, all_genre, created_comic, changeTimetoDDMMYYYY});
      }
      catch(err) {

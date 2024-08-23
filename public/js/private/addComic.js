@@ -500,6 +500,8 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
      const search_input = document.querySelector('.body_header__search-bar');
      const comic_data = JSON.parse(dataFromServer);
+     const user_quyen = document.querySelector('.header_ext__userInfo-name').getAttribute('data-user-quyen');
+     
      search_input.addEventListener('input', function(e) {
           const query = e.target.value;
 
@@ -519,7 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <div><i class="fa-solid fa-pen"></i></div>
                                    </div>
                                    <div class="body_comic__item-first-support">
-                                        <div class="body_comic__item-delete">
+                                        <div style='display: ${(user_quyen === 'admin') ? 'block' : 'none'}' class="body_comic__item-delete">
                                              <i class="fa-regular fa-trash-can"></i>
                                         </div>
                                         <div class="body_comic__item-date">
@@ -579,7 +581,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                    <div><i class="fa-solid fa-pen"></i></div>
                               </div>
                               <div class="body_comic__item-first-support">
-                                   <div class="body_comic__item-delete">
+                                   <div style='display: ${(user_quyen === 'admin') ? 'block' : 'none'}' class="body_comic__item-delete">
                                         <i class="fa-regular fa-trash-can"></i>
                                    </div>
                                    <div class="body_comic__item-date">

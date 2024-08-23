@@ -55,7 +55,7 @@ function renderPage(page) {
      const totalPages = Math.ceil(data.length / itemsPerPage);
      const comment_list = document.querySelector('.comment_list');
      const user_name = document.querySelector('.header_ext__userInfo-name').textContent.trim();
-     
+     const user_quyen = document.querySelector('.header_ext__userInfo-name').getAttribute('data-user-quyen');
      // Render items
      comment_list.innerHTML = itemsToShow.map(item => 
           `<div class="comment_list__item">
@@ -74,7 +74,7 @@ function renderPage(page) {
                                    </div>
                               </div>
                               <div class="comment_list__content-body">
-                                   ${item.noi_dung}
+                                   ${item.noi_dung.replace(/\r\n|\n/g, '<br>')}
                               </div>
                               <div class="comment_list__content-foot">
                                    <div class="comment_list__content-emotion">
@@ -91,7 +91,7 @@ function renderPage(page) {
                                         <i class="fa-solid fa-reply"></i>
                                         <span>Trả lời</span>
                                    </div>
-                                   <div style="display: ${(user_name && user_name === item.ten) ? "block": "none"}" class="comment_list__content-delete">
+                                   <div style="display: ${((user_name && user_name === item.ten) || (user_quyen === 'admin')) ? "block": "none"}" class="comment_list__content-delete">
                                         <i class="fa-solid fa-trash"></i>
                                    </div>
                               </div>

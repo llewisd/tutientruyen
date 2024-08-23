@@ -43,9 +43,15 @@
                                                   <div><i class="fa-solid fa-pen"></i></div>
                                              </div>
                                              <div class="body_comic__item-first-support">
-                                                  <div class="body_comic__item-delete">
-                                                       <i class="fa-regular fa-trash-can"></i>
-                                                  </div>
+                                                  <% if(userInfo.quyen === 'admin') { %>
+                                                       <div class="body_comic__item-delete">
+                                                            <i class="fa-regular fa-trash-can"></i>
+                                                       </div>
+                                                  <% } else { %>
+                                                       <div style="display: none" class="body_comic__item-delete">
+                                                            <i class="fa-regular fa-trash-can"></i>
+                                                       </div>
+                                                  <% } %>
                                                   <div class="body_comic__item-date">
                                                        <i class="fa-regular fa-clock"></i>
                                                        <span><%= (item.cap_nhat) ? changeTimetoDDMMYYYY(item.cap_nhat) : changeTimetoDDMMYYYY(Date.now()) %></span>
