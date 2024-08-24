@@ -60,7 +60,7 @@ function renderPage(page) {
      comment_list.innerHTML = itemsToShow.map(item => 
           `<div class="comment_list__item">
                     <div class="comment_list__img">
-                         <img src="${item.anh}" alt="avatar">
+                         <img src="${item.anh}" alt="avatar" loading="lazy">
                     </div>
                     <div class="comment_list__sidebar">
                          <div class="comment_list__content" data-comment-id="${item._id}">
@@ -105,7 +105,7 @@ function renderPage(page) {
                               ${ item.binh_luan_con.map(sub_item => `
                                    <div class="comment_list__item">
                                         <div class="comment_list__img">
-                                             <img src="${sub_item.taikhoan_id.anh}" alt="avatar">
+                                             <img src="${sub_item.taikhoan_id.anh}" alt="avatar" loading="lazy">
                                         </div>
                                         <div class="comment_list__sidebar">
                                              <div class="comment_list__content" data-comment-id="${sub_item._id}">

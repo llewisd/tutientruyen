@@ -30,10 +30,8 @@ router.get('/delete', addComicController.deleteComic);
 
 router.get('/update/getComic', addComicController.getComicforUpdate);
 
-router.post('/update/folder', addComicController.updateComicFolder);
+router.post('/update/folder' , addComicController.updateComicFolder);
 
 router.post('/update', upload.single('image') , addComicController.updateComic);
-
-// router.get('/updateError/:truyen_id', addComicController.updateError);
 
 module.exports = router;

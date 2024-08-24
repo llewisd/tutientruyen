@@ -2,16 +2,17 @@ const express = require('express');
 const router = express.Router();
 const loginController = require('../controllers/loginController');
 const loginMiddleware = require('../middlewares/loginMiddleware');
+const secureMiddleware = require('../middlewares/secureMiddleware');
 
-router.post('/signup', loginController.signUpAccount);
+router.post('/signup', secureMiddleware.stringEscape , loginController.signUpAccount);
 
 router.post('/signup/checkEmailExist', loginController.checkEmailExist);
 
-router.post('/signin', loginController.signInAccount);
+router.post('/signin', secureMiddleware.stringEscape , loginController.signInAccount);
 
 router.get('/signout', loginController.signOutAccount);
 
-router.post('/forgetPassword', loginController.sendPasswordToEmail);
+router.post('/forgetPassword', secureMiddleware.stringEscape , loginController.sendPasswordToEmail);
 
 
 // Đăng nhập với mạng xã hội

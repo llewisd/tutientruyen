@@ -21,7 +21,7 @@ const filterComic = async (req,res) => {
           const pagination_url = `/filter?status=${status}&arrange=${arrange}&trans=${trans}&genre=${genre}&page=`  
 
           const skip = (page - 1) * limit; // Số lượng mục cần bỏ qua
-  
+     
           const comicInfo = await Chapter.aggregate([
                {
                     $lookup: {
@@ -146,8 +146,8 @@ const filterComic = async (req,res) => {
                {
                     $limit: limit
                }
-          ])
-  
+          ]);
+     
           // Tính tổng số lượng mục để phân trang
           let total = await Chapter.aggregate([
                {

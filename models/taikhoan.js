@@ -20,6 +20,8 @@ const taikhoan_Schema = mongoose.Schema({
      }
 }, {collection: 'Taikhoan',  versionKey: false});
 
+taikhoan_Schema.index({email : 1});
+
 const Taikhoan = mongoose.model('Taikhoan', taikhoan_Schema);
 
 module.exports = Taikhoan;

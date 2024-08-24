@@ -29,7 +29,6 @@ const truyen_Schema = mongoose.Schema({
      },
      link: {
           type: String,
-          unique: true
      },
      anh: String,
      anh_root: String,

@@ -102,7 +102,7 @@ const getChapter = async (req, res) => {
                     $match: {chuong: chapter}
                }
           ]);
-          
+
           const chapterInfo = getchapterInfo[0];
           // Ta định nghĩa status của chapter : 
           // 1 : chapter đầu tiên
@@ -449,7 +449,7 @@ const loadComment = async (req, res) => {
                {
                     $sort: {ngay_tao: -1}
                },
-          ]).exec();
+          ]).exec();   
           res.send(commentInfo);
 
      }

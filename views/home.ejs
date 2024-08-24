@@ -49,7 +49,7 @@
                          <% content.forEach(item => { %>
                               <div class="body_list__item">
                                    <a href="/truyen/<%= item.link %>" class="body_list__info">
-                                        <img src="<%= item.anh %>" alt="<%= item.ten %>">
+                                        <img src="<%= item.anh %>" alt="<%= item.ten %>" loading="lazy">
                                          <span><%= getTimeSinceLastUpdate(item.cap_nhat) %></span>
                                    </a>
                                    <a href="/truyen/<%= item.link %>" class="body_list__name"><%= item.ten %></a>
@@ -75,7 +75,7 @@
                               <% for(i = 0; i < 5 ; i++) { %>
                                    <a href="/truyen/<%= sidebar[i].link %>" class="body_board__item">
                                         <div class="body_board__image">
-                                             <img src="<%= sidebar[i].anh %>" alt="<%= sidebar[i].ten %>">
+                                             <img src="<%= sidebar[i].anh %>" alt="<%= sidebar[i].ten %>" loading="lazy">
                                         </div>
                                         <div class="body_board__info">
                                              <div class="body_board__rank-and-name">

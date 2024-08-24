@@ -227,7 +227,8 @@ const getHomepage = async (req, res) => {
                {
                     $limit: 5
                }
-          ])
+          ]);
+     
           res.render('home', {slider, content, sidebar, userInfo, all_genre ,getTimeSinceLastUpdate})
      }
      catch(err) {
@@ -287,7 +288,7 @@ const searchItems = async (req, res) => {
           {
                $sort: {tong_luot_xem: -1}
           }
-         ]); 
+         ]);
          res.json(results);
      } catch (error) {
          res.status(500).send(error.toString());

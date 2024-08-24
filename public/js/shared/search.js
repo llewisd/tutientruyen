@@ -28,7 +28,7 @@ function search() {
 
                          block.innerHTML = `
                               <div class="header_ext__dropdown-img">
-                                   <img src="${item.anh}" alt="${item.ten}">
+                                   <img src="${item.anh}" alt="${item.ten}" loading="lazy">
                               </div>
                               <div class="header_ext__dropdown-info">
                                    <div class="header_ext__dropdown-info-name">${item.ten}</div>

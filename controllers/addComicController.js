@@ -204,7 +204,7 @@ const getAddComicPage = async (req, res) => {
                     }
                ]);
           }
-          
+
           res.render('addComic', {userInfo, all_genre, created_comic, changeTimetoDDMMYYYY});
      }
      catch(err) {

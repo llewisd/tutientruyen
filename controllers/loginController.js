@@ -64,9 +64,9 @@ const checkEmailExist = async (req, res) => {
 
 const signInAccount = async (req, res) => {
      const {email, password} = req.body;
-
-     const getAccount = await Taikhoan.find({email: email, loai: 'lc'});
      
+     const getAccount = await Taikhoan.find({email: email, loai: 'lc'});
+
      const check = {
           email: "ok",
           password: "ok"

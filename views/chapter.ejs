@@ -36,7 +36,7 @@
                <div class="body_content">
                     <% chapterInfo.anh.forEach(item => { %>
                          <div class="body_image">
-                              <img src="<%= chapterInfo.anh_root %><%= item.path %>" alt="image <%= item.stt %>">
+                              <img src="<%= chapterInfo.anh_root %><%= item.path %>" alt="image <%= item.stt %>" loading="lazy">
                          </div>
                     <% }) %>
                </div>
@@ -49,7 +49,7 @@
                <% if(userInfo) { %>
                     <div class="comment_post">
                          <div class="comment_post__img">
-                              <img src="<%= userInfo.anh %>" alt="avatar">
+                              <img src="<%= userInfo.anh %>" alt="avatar" loading="lazy">
                          </div>
                          
                          <div class="comment_post__block">
@@ -69,7 +69,7 @@
                <% } else { %>
                     <div class="comment_post">
                          <div class="comment_post__img">
-                              <img src="/images/local/anonymous.png" alt="avatar">
+                              <img src="/images/local/anonymous.png" alt="avatar" loading="lazy">
                          </div>
                
                          <div class="comment_post__block">
