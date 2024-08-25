@@ -210,6 +210,7 @@
      border-radius: 8px;
      overflow: hidden;
      box-shadow: 3px 3px 5px 5px rgba(0, 0, 0, 0.3);
+     z-index: 10;
 }
 
 .header_ext__userInfo-dropdown-item {
@@ -311,6 +312,67 @@
      color: var(--white-color);
 }
 
+
+/* Responsive */
+/* Mobile nhỏ */
+@media (max-width: 400px) { 
+     .header_ext__userInfo-name {
+          display: none;
+     }
+     .header_ext__userInfo-arrrow {
+          display: none;
+     }
+     .header_ext__userInfo-dropdown {
+          top: 100%;
+          right: 25px;
+          transform: translateX(50%);
+     }
+     /* SignIn / Signup window */
+     .sign_window__popup {
+          width: 90vw;
+          top: 10vh;
+     }
+     .sign_window__tag {
+          padding: 12px 10px;
+          font-size: var(--font-size-18);
+     }
+     .sign_window__block label {
+          font-size: var(--font-size-16);
+     }
+     .sign_window__social a {
+          padding: 8px 12px;
+          font-size: var(--font-size-14);
+     }
+     /* ForgetPassword popup */
+     .forgetpassword_popup {
+          width: 90vw;
+          top: 10vh;
+     }
+ }
+ 
+ /* Mobile lớn */
+ @media (min-width: 401px) and (max-width: 767.98px) { 
+     .header_ext__userInfo-dropdown {
+          top: 100%;
+          right: 25px;
+          transform: translateX(50%);
+     }
+     /* SignIn / Signup window */
+     .sign_window__popup {
+          width: 80vw;
+          top: 10vh;
+     }
+     /* ForgetPassword popup */
+     .forgetpassword_popup {
+          width: 80vw;
+          top: 10vh;
+     }
+ }
+ 
+ /* Máy tính bảng (Tablet) */
+ @media (min-width: 768px) and (max-width: 991.98px) { 
+    
+ }
 
 
 

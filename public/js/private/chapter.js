@@ -132,7 +132,7 @@ function renderPage(page) {
                                                                  <span>${sub_item.ghet}</span>
                                                             </div>
                                                        </div>
-                                                       <div style="display: ${(user_name && user_name === sub_item.taikhoan_id.ten) ? "block": "none"}" class="comment_list__content-delete">
+                                                       <div style="display: ${((user_name && user_name === sub_item.taikhoan_id.ten) || (user_quyen === 'admin')) ? "block": "none"}" class="comment_list__content-delete">
                                                             <i class="fa-solid fa-trash"></i>
                                                        </div>
                                                   </div>

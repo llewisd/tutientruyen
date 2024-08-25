@@ -8,7 +8,7 @@
      margin: 50px var(--margin-lr) 10px;
      font-size: var(--font-size-24);
      font-weight: var(--font-weight-bold);
-     color: var(--opacity-white-color);
+     color: var(--purple-color);
      padding: 10px 10px 5px 16px;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .body_info__addition table td:nth-child(1) {
-     width: 14%;
+     width: 150px;
 }
 
 .body_info__genreBlock td:nth-child(2) a {
@@ -87,7 +87,7 @@
      font-size: var(--font-size-18);
      margin-top: 20px;
      line-height: 1.5;
-     white-space: pre;
+     white-space: pre-wrap;
 }
 
 .body_chapterList {
@@ -144,6 +144,10 @@
 .body_chapterList__item:hover {
      background-color: var(--main-green-color);
 }
+
+.body_chapterList__item:visited .body_chapterList__item-head-chapter {
+     color: var(--green-color);
+}
   
 .body_chapterList__item-head {
      font-weight: var(--font-weight-light);
@@ -183,5 +187,81 @@
      display: flex;
      align-items: center;
      column-gap: 6px;
+}
+
+/* Responsive */
+/* Mobile nhỏ */
+@media (max-width: 400px) { 
+     /* Body */
+     .body_name {
+          text-align: center;
+          margin: 50px var(--margin-lr) 30px;
+     }
+     .body_info {
+          flex-direction: column;
+          row-gap: 20px;
+     }
+     .body_info__img {
+          flex: 0 0 240px;
+          height: 280px;
+     }
+     .body_info__addition table td:nth-child(1) {
+          width: 100px;
+          text-align: center;
+          padding: 6px;
+     }
+     .body_info__addition table td:nth-child(2) {
+          text-align: center;
+          padding: 8px;
+     }
+     .body_info__genreBlock td:nth-child(2) a {
+          padding: 3px 3px;
+          margin-right: 5px;
+     }
+     .body_chapterList__item {
+          flex-basis: 100%;
+     }
+     .body_chapterList__item-head {
+          margin-bottom: 20px;
+          font-size: var(--font-size-20);
+     }
+}
+
+/* Mobile lớn */
+@media (min-width: 401px) and (max-width: 767.98px) { 
+     /* Body */
+     .body_name {
+          text-align: center;
+          margin: 50px var(--margin-lr) 30px;
+     }
+     .body_info {
+          flex-direction: column;
+          row-gap: 20px;
+     }
+     .body_info__img {
+          flex: 0 0 240px;
+          height: 280px;
+     }
+     .body_info__addition table td:nth-child(1) {
+          width: 100px;
+          text-align: center;
+          padding: 6px;
+     }
+     .body_info__addition table td:nth-child(2) {
+          text-align: center;
+          padding: 8px;
+     }
+     .body_chapterList__item {
+          flex-basis: 100%;
+     }
+     .body_chapterList__item-head {
+          margin-bottom: 20px;
+          font-size: var(--font-size-20);
+     }
+}
+
+/* Máy tính bảng (Tablet) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+     
 }
 

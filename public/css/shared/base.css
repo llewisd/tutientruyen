@@ -17,7 +17,7 @@
      --orange-color: #ff7f0a;
      --brown-color: #c79243;
      --opacity-white-color: #eceaea;
-     --purple-color: #8556b1;
+     --purple-color: #bea3d7;
      --red-color: #ff004c;
      --ice-screem-color: #F5F5F5;
      --blue-color: rgb(99, 212, 247);
@@ -51,4 +51,26 @@ button {
      outline: none;
      background-color: transparent;
      font-size: var(--font-size-16);
+}
+
+/* Responsive */
+/* Mobile nhỏ */
+@media (max-width: 400px) { 
+     :root {
+          --margin-lr: 20px;
+     }
+}
+
+/* Mobile lớn */
+@media (min-width: 401px) and (max-width: 767.98px) { 
+     :root {
+          --margin-lr: 20px;
+     }
+}
+
+/* Máy tính bảng (Tablet) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+     :root {
+          --margin-lr: 60px;
+     }
 }
