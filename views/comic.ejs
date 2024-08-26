@@ -8,16 +8,18 @@
      <link rel="stylesheet" href="/css/shared/header.css">
      <link rel="stylesheet" href="/css/shared/login.css">
      <link rel="stylesheet" href="/css/private/comic.css">
-     <title>Welcome to tutientruyen</title>
+     <title><%= comicInfo.ten %></title>
+     <meta name="description" content="<%= comicInfo.ten %> là bộ truyện tranh trung quốc (manhua) hay, có nhiều tình tiết hấp dẫn khiến người đọc không thể bỏ lỡ. Hãy đọc ngay tại tutientruyen . Tóm tắt nội dung : <%= comicInfo.mo_ta %>">
+     <meta name="keywords" content="tutientruyen, truyện tranh, manhua, truyện tranh trung quốc , <%= comicInfo.ten %>">
 </head>
 <body>
      <div class="app">
           <%- include('partials/header') %>
 
           <div class="body">
-               <div class="body_name">
+               <h1 class="body_name">
                     <%= comicInfo.ten %>
-               </div>
+               </h1>
                <div class="body_info">
                     <div class="body_info__img">
                          <img src="<%= comicInfo.anh %>" alt="<%= comicInfo.ten %>">
@@ -59,6 +61,7 @@
                     <div class="body_description__title">
                          <i class="fa-solid fa-pen"></i>
                          <span>Mô tả</span>
+                         <h2 style="display: none;">Mô tả</h2>
                     </div>
                     <div class="body_description__detail"><%= comicInfo.mo_ta %></div>
                </div>
@@ -67,6 +70,7 @@
                     <div class="body_chapterList__title">
                          <i class="fa-solid fa-layer-group"></i>
                          <span>Danh sách chương</span>
+                         <h2 style="display: none;">Danh sách chương</h2>
                     </div>
                     <div class="body_chapterList__list">
                          <% comicInfo.chapter.forEach(item => { %>
