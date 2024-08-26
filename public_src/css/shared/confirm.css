@@ -1,0 +1,54 @@
+/* Delete comment block */
+.delete_confirm__block {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: rgba(0, 0, 0, 0.5);
+     z-index: 100;
+}
+
+.delete_confirm__popup {
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background-color: var(--ice-screem-color);
+     padding: 16px 22px;
+     display: flex;
+     flex-direction: column;
+     row-gap: 20px;
+     border-radius: 12px;
+}
+
+.delete_confirm__content {
+     font-size: var(--font-size-18);
+     font-weight: var(--font-weight-bold);
+}
+
+.delete_confirm__select {
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+     column-gap: 20px;
+}
+
+.delete_confirm__select button {
+     padding: 8px 10px;
+     border-radius: 6px;
+     color: var(--white-color);
+     font-weight: var(--font-weight-bold);
+}
+
+.delete_confirm__select button:hover {
+     cursor: pointer;
+}
+
+.delete_confirm__select button:nth-child(1) {
+     background-color: var(--green-color);
+}
+
+.delete_confirm__select button:nth-child(2) {
+     background-color: var(--red-color);
+}

@@ -1,0 +1,88 @@
+.pagination {
+     margin: 0 var(--margin-lr);
+     margin-top: 20px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 10px 20px; 
+     color: var(--opacity-white-color);
+     font-size: var(--font-size-16);
+}
+
+.pagination__before, .pagination__after {
+     display: flex;
+     align-items: center;
+     column-gap: 8px;
+     padding: 8px 12px;
+     background-image: linear-gradient(to right, #b477ed, #8c2fe2);
+     border-radius: 12px;
+}
+
+.pagination__main {
+     display: flex;
+     align-items: center;
+     column-gap: 5px;
+}
+
+.pagination__main span:first-child {
+     margin-right: 5px;
+}
+
+.pagination__select {
+     position: relative;
+     padding: 4px 6px;
+     background-color: var(--main-green-color);
+     border-radius: 10px;
+}
+
+.pagination__select:hover {
+     cursor: pointer;
+     opacity: 0.9;
+}
+
+.pagination__option {
+     position: absolute;
+     left: -20%;
+     top: calc(100% + 3px);
+     width: calc(100% + 20px);
+     overflow: auto;
+     scrollbar-width: thin;
+     box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.5);
+     display: none;
+     max-height: 100px;
+     border-radius: 5px;
+}
+
+.pagination__option a {
+     border-radius: 5px;
+     padding: 5px 10px;
+     display: block;
+}
+
+
+.pagination__option a:hover {
+     background-color: var(--main-green-color);
+}
+
+/* Responsive */
+/* Mobile nhỏ */
+@media (max-width: 400px) { 
+     .pagination {
+          padding: 0;
+          font-size: var(--font-size-14);
+     }
+     .pagination__before, .pagination__after {
+          padding: 6px 8px;
+          font-size: var(--font-size-12);
+     }
+}
+
+/* Mobile lớn */
+@media (min-width: 401px) and (max-width: 767.98px) { 
+     
+}
+
+/* Máy tính bảng (Tablet) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+     
+}

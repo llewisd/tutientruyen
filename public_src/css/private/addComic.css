@@ -1,0 +1,551 @@
+/* Body */
+.body {
+     width: 100%;
+     padding-top: 100px;
+}
+
+.body_block {
+     margin: 0 var(--margin-lr);
+}
+
+.body_header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+
+.body_header__intro {
+     display: flex;
+     align-items: center;
+     column-gap: 12px;
+     color: var(--white-color);
+     font-size: var(--font-size-title);
+     font-weight: var(--font-weight-bold);
+     /* Đổi màu chữ thành gradient */
+     background: linear-gradient(to right, #ff4e50, #f9d423);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+}
+
+.body_header__search-block {
+     display: flex;
+     align-items: center;
+}
+
+.body_header__search-bar {
+     padding: 6px 8px; 
+     font-size: var(--font-size-16);
+     border: none;
+     outline: none;
+     border-radius: 6px 0 0 6px;
+}
+
+.body_header__search-block button {
+     background-color: var(--white-color);
+     padding: 6px 8px;
+     font-size: var(--font-size-16);
+     border-radius: 0 6px 6px 0;
+}
+
+.body_comic__list {
+     margin-top: 60px;
+     max-height: 2000px;
+     overflow-y: auto;
+     scrollbar-width: thin;
+}
+
+.body_comic__item {
+     display: flex;
+     column-gap: 10px;
+     border: 3px solid var(--green-color);
+     border-radius: 10px;
+     margin-bottom: 30px;
+}
+
+.body_comic__item-img {
+     width: 140px;
+     height: 180px;
+     border-radius: 10px;
+     overflow: hidden;
+     flex: 0 0 140px;
+}
+
+
+.body_comic__item-img img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+}
+
+.body_comic__item-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+     flex: 1;
+     align-self: stretch;
+     padding: 12px 14px;
+     padding-right: 24px;
+}
+
+.body_comic__item-first {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     color: var(--opacity-white-color);
+}
+
+.body_comic__item-name {
+     display: flex;
+     align-items: center;
+     column-gap: 14px;
+}
+
+.body_comic__item-name a {
+     font-size: var(--font-size-22);
+     font-weight: var(--font-weight-bold);
+     max-width: 300px;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+}
+
+.body_comic__item-name a:hover {
+     text-decoration: underline;
+}
+
+.body_comic__item-name div {
+     padding: 5px;
+}
+
+.body_comic__item-name div:hover {
+     cursor: pointer;
+}
+
+.body_comic__item-first-support {
+     display: flex;
+     align-items: center;
+     column-gap: 50px;
+}
+
+.body_comic__item-delete:hover {
+     cursor: pointer;
+}
+
+.body_comic__item-date {
+     display: flex;
+     align-items: center;
+     column-gap: 8px;
+}
+
+.body_comic__item-moreInfo {
+     display: flex;
+     align-items: center;
+     column-gap: 20px;
+     color: var(--white-color);
+     font-size: var(--font-size-16);
+}
+
+.body_comic__item-third {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     color: var(--white-color);
+     font-size: var(--font-size-16);
+}
+
+.body_comic__item-error-view {
+     display: flex;
+     align-items: center;
+     column-gap: 120px;
+     color: var(--white-color);
+}
+
+.body_comic__item-flag {
+     display: flex;
+     align-items: center;
+     column-gap: 12px;
+}
+
+.body_comic__item-flag button {
+     background-color: var(--opacity-white-color);
+     padding: 6px 10px;
+     border-radius: 8px;
+     margin-left: 10px;
+}
+
+.body_comic__item-flag button:hover {
+     cursor: pointer;
+}
+
+.body_comic__item-view {
+     display: flex;
+     align-items: center;
+     column-gap: 12px;
+}
+
+.body_comic__item-detail {
+     font-size: var(--font-size-20);
+}
+
+.add_btn__footer {
+     position: fixed;
+     bottom: 60px;
+     right: 40px;
+     background-color: var(--white-color);
+     padding: 16px;
+     font-size: var(--font-size-18);
+     font-weight: var(--font-weight-bold);
+     border-radius: 16px;
+}
+
+.add_btn__footer:hover {
+     cursor: pointer;
+}
+
+/* AddComic popup */
+.addComic_block {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     z-index: 10;
+     background-color: rgba(0, 0, 0, 0.6);
+}
+
+.addComic_popup {
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background-color: var(--ice-screem-color);
+     padding: 20px 30px;
+     max-height: 600px;
+     overflow-y: auto;
+     scrollbar-width: thin;
+}
+
+.addComic_exit {
+     margin: 0 0 10px 0;
+}
+
+.addComic_exit div {
+     float: right;
+     font-size: var(--font-size-18);
+     font-weight: var(--font-weight-bold);
+     padding: 6px;
+}
+
+.addComic_exit div:hover {
+     cursor: pointer;
+}
+
+.addComic_popup__container {
+     display: grid;
+     grid-template-columns: 0.5fr 3fr;
+     row-gap: 20px;
+     column-gap: 50px;
+     color: var(--black-color);
+     font-size: var(--font-size-18);
+     width: 600px;
+     margin-bottom: 20px;
+}
+
+.addComic_popup__dropdown {
+     padding: 5px 10px;
+     border: 1px solid transparent;
+     outline: none;
+     font-size: var(--font-size-16);
+     border-radius: 5px;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     overflow: hidden;
+     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+.addComic_popup__input {
+     padding: 5px 10px;
+     border: 1px solid transparent;
+     outline: none;
+     font-size: var(--font-size-16);
+     border-radius: 5px;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     overflow: hidden;
+     width: 60%;
+     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+.addComic_popup__dropdown:focus, .addComic_popup__input:focus {
+     border: 1px solid var(--green-color);
+}
+
+
+.addComic_popup__img {
+     width: 100px;
+     height: 100px;
+     align-self: center;
+}
+
+.addComic_popup__img img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     border-radius: 50%;
+     border: 3px solid rgb(89, 200, 228);
+}
+
+.addComic_popup__observation {
+     align-self: center;
+}
+
+.addComic_popup__description textarea {
+     width: 100%;
+     height: 100px;
+     overflow: auto;
+     white-space: pre-wrap;
+}
+
+
+.addComic_popup__genres {
+     display: flex;
+     column-gap: 10px;
+}
+
+#addComic_popup__genre-dropdown {
+     align-self: flex-start;
+}
+
+.addComic_popup__genre-list {
+     display: flex;
+     column-gap: 20px;
+     row-gap: 10px;
+     align-items: center;
+     flex: 1;
+     border: 1px solid var(--black-color);
+     padding: 6px;
+     flex-wrap: wrap;
+}
+
+.addComic_popup__genre-item {
+     padding: 5px 8px;
+     background-color: var(--green-color);
+     border-radius: 8px;
+     position: relative;
+}
+
+.addComic_popup__genre-item span i{
+     position: absolute;
+     color: var(--red-color);
+     top: 0;
+     right: 0;
+     transform: translate(50%, -40%);
+}
+
+.addComic_alert__warning {
+     color: var(--red-color);
+     display: flex;
+     align-items: center;
+     column-gap: 10px;
+     margin: 16px 0;
+}
+
+.addComic_alert__success {
+     color: var(--green-color);
+     display: flex;
+     align-items: center;
+     column-gap: 10px;
+     margin: 16px 0;
+}
+
+.addComic_button {
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+     column-gap: 20px;
+}
+
+.addComic_button button {
+     padding: 8px 10px;
+     border-radius: 6px;
+     color: var(--white-color);
+     font-weight: var(--font-weight-bold);
+}
+
+.addComic_button button:hover {
+     cursor: pointer;
+}
+
+.addComic_button button:nth-child(1) {
+     background-color: var(--red-color);
+}
+
+.addComic_button button:nth-child(2) {
+     background-color: var(--green-color);
+}
+
+/* Responsive */
+/* Mobile nhỏ */
+@media (max-width: 400px) { 
+     .body_header {
+          flex-direction: column;
+          row-gap: 20px;
+     }
+     .body_header__intro {
+          align-self: flex-start;
+     }
+     .body_comic__list {
+          margin-top: 40px;
+     }
+     .body_comic__item-img {
+          max-width: 80px;
+          height: auto;
+          flex: 1 0 80px;
+     }
+     .body_comic__item-content {
+          padding: 6px 8px;
+          padding-right: 0;
+          row-gap: 6px;
+     }
+     .body_comic__item-first {
+          flex-direction: column;
+          row-gap: 6px;
+          justify-content: flex-start;
+          align-items: flex-start;
+     }
+     .body_comic__item-name {
+          column-gap: 8px;
+     }
+     .body_comic__item-name a {
+          font-size: var(--font-size-16);
+          overflow: hidden;
+          max-width: 140px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+     }
+     .body_comic__item-moreInfo {
+          flex-direction: column;
+          row-gap: 6px;
+          font-size: var(--font-size-14);
+          justify-content: flex-start;
+          align-items: flex-start;
+     }
+     .body_comic__item-moreInfo div:nth-of-type(2) {
+          display: none;
+     }
+     .body_comic__item-third {
+          font-size: var(--font-size-14);
+          flex-direction: column;
+          row-gap: 4px;
+     }
+     .body_comic__item-error-view {
+          column-gap: 20px;
+          flex-direction: column;
+          align-items: flex-start;
+          align-self: flex-start;
+     }
+      /* Popup thêm comic */
+      .addComic_popup {
+          padding: 10px 18px;
+     }
+     #addComic_popup__form-container {
+          width: 90vw;
+          column-gap: 24px;
+     }
+     .addComic_popup__img {
+          width: 50px;
+          height: 50px;
+     }
+     .addComic_popup__genres {
+          flex-direction: column;
+          row-gap: 8px;
+     }
+     .add_btn__footer {
+          right: 10px;
+          bottom: 20px;
+     }
+}
+
+/* Mobile lớn */
+@media (min-width: 401px) and (max-width: 767.98px) { 
+     .body_header {
+          flex-direction: column;
+          row-gap: 20px;
+     }
+     .body_header__intro {
+          align-self: flex-start;
+     }
+     .body_comic__list {
+          margin-top: 40px;
+     }
+     .body_comic__item-img {
+          max-width: 140px;
+          height: auto;
+          flex: 1 0 140px;
+     }
+     .body_comic__item-content {
+          padding: 6px 8px;
+          padding-right: 0;
+          row-gap: 6px;
+     }
+     .body_comic__item-first {
+          flex-direction: column;
+          row-gap: 6px;
+          justify-content: flex-start;
+          align-items: flex-start;
+     }
+     .body_comic__item-name {
+          column-gap: 8px;
+     }
+     .body_comic__item-name a {
+          font-size: var(--font-size-16);
+          overflow: hidden;
+          max-width: 140px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+     }
+     .body_comic__item-moreInfo {
+          flex-direction: column;
+          row-gap: 6px;
+          font-size: var(--font-size-14);
+          justify-content: flex-start;
+          align-items: flex-start;
+     }
+     .body_comic__item-moreInfo div:nth-of-type(2) {
+          display: none;
+     }
+     .body_comic__item-third {
+          font-size: var(--font-size-14);
+          flex-direction: column;
+          row-gap: 4px;
+     }
+     .body_comic__item-error-view {
+          column-gap: 20px;
+          flex-direction: column;
+          align-items: flex-start;
+          align-self: flex-start;
+     }
+     /* Popup thêm comic */
+     .addComic_popup {
+          padding: 10px 18px;
+     }
+     #addComic_popup__form-container {
+          width: 80vw;
+          column-gap: 24px;
+     }
+     .addComic_popup__genres {
+          flex-direction: column;
+          row-gap: 8px;
+     }
+     .add_btn__footer {
+          right: 10px;
+          bottom: 30px;
+     }
+}
+
+/* Máy tính bảng (Tablet) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+     
+}

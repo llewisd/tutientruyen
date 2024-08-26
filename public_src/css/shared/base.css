@@ -1,0 +1,76 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: Arial, Helvetica, sans-serif;
+     border: none;
+}
+
+:root {
+     --white-color: #fff;
+     --black-color: #000;
+     --main-green-color: #0A5C36;
+     --green-color: #1ca867;
+     --main-black-color: #343434; 
+     --gray-color: #767373;
+     --main-gray-color: #d9d9d9;
+     --orange-color: #ff7f0a;
+     --brown-color: #c79243;
+     --opacity-white-color: #eceaea;
+     --purple-color: #bea3d7;
+     --red-color: #ff004c;
+     --ice-screem-color: #F5F5F5;
+     --blue-color: rgb(99, 212, 247);
+     --font-size-title: 20px;
+     --font-size-12: 12px;
+     --font-size-14: 14px;
+     --font-size-16: 16px;
+     --font-size-18: 18px;
+     --font-size-20: 20px;
+     --font-size-22: 22px;
+     --font-size-24: 24px;
+     --font-size-30: 30px;
+     --font-size-40: 40px;
+     --font-weight-light: 400;
+     --font-weight-bold: 600;
+     --margin-lr: 120px;
+     --background-linear-gradient-red: linear-gradient(to right, #ff4e50, #f9d423);
+     --background-linear-gradient-yellow: linear-gradient(to right, #bfe654, #ffe000);
+     --background-linear-gradient-blue: linear-gradient(to right, #8cc5e5, #2029db);
+}
+
+a {
+     text-decoration: none;
+     display: inline-block;
+     color: var(--opacity-white-color);
+}
+
+button {
+     display: inline-block;
+     border: none;
+     outline: none;
+     background-color: transparent;
+     font-size: var(--font-size-16);
+}
+
+/* Responsive */
+/* Mobile nhỏ */
+@media (max-width: 400px) { 
+     :root {
+          --margin-lr: 20px;
+     }
+}
+
+/* Mobile lớn */
+@media (min-width: 401px) and (max-width: 767.98px) { 
+     :root {
+          --margin-lr: 20px;
+     }
+}
+
+/* Máy tính bảng (Tablet) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+     :root {
+          --margin-lr: 60px;
+     }
+}
